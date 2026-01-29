@@ -1,0 +1,26 @@
+.modern-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; }
+
+.field-container { display: flex; flex-direction: column; }
+
+/* עיצוב שדה לא תקין */
+input.is-invalid {
+  border: 2px solid #ff4d4d;
+  background-color: #fff5f5;
+}
+
+.error-msg {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn:disabled { background-color: #ccc; }

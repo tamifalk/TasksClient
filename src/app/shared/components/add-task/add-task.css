@@ -1,0 +1,74 @@
+/* --- עיצוב בסיסי לכל השדות --- */
+:host {
+  display: block;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+/* כפתורים */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+}
+.save-btn { color: #2e7d32; }
+.cancel-btn { color: #d32f2f; }
+
+
+/* =========================================
+   מצב לוח (BOARD) - נראה כמו כרטיס
+   ========================================= */
+:host(.board-mode) {
+  position: fixed; /* או absolute - תלוי איך מיקמת את זה */
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  width: 300px;
+  z-index: 1000;
+}
+
+:host(.board-mode) .add-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* =========================================
+   מצב רשימה (LIST) - נראה כמו שורה
+   ========================================= */
+:host(.list-mode) {
+  display: block;
+  background: #fdfdfd; /* צבע טיפה שונה להדגשה שזה עריכה */
+  border: 2px dashed #a5d6a7; /* מסגרת מקווקוות ירוקה */
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+:host(.list-mode) .add-card-inner {
+  display: grid;
+  /* העתקנו את הגריד בדיוק מהכרטיס ומכותרת הטבלה! */
+  /* Title | Priority | Status | Date | Actions */
+  grid-template-columns: 2fr 1fr 1fr 1fr 80px; 
+  
+  gap: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+/* במצב רשימה, נוריד את המסגרות של האינפוטים שיראה נקי יותר */
+:host(.list-mode) input, 
+:host(.list-mode) select {
+  background: white;
+  border: 1px solid #eee;
+}

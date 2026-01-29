@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* --- הגדרות כלליות --- */
+.landing-container {
+  display: flex;
+  height: 100vh;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* --- Hero Section (צד שמאל כחול) --- */
+.hero-section {
+  flex: 1.8;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #1e293b 0%, #0f172a 100%);
+  position: relative;
+  overflow: hidden; /* שומר על המטוס בתוך השטח הכחול בלבד */
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+  position: relative;
+  z-index: 2;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #fff, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: #94a3b8;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- המטוס הטס (אנימציה אופקית איטית) --- */
+.rocket-orbit {
+  position: absolute;
+  top: 15%; /* מיקום בחלק העליון */
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flying-rocket {
+  position: absolute;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  color: #38bdf8;
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6));
+  /* 15 שניות לחצייה מלאה, תנועה חלקה ואינסופית */
+  animation: flyAcrossHorizontal 15s linear infinite;
+}
+
+@keyframes flyAcrossHorizontal {
+  0% {
+    transform: translateX(-100px) rotate(90deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) rotate(90deg); /* חוצה עד הסוף הימני של החלק הכחול */
+    opacity: 0;
+  }
+}
+
+/* --- Action Section (צד ימין בהיר) --- */
+.action-section {
+  flex: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #f8fafc;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: white;
+  padding: 45px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header h2 {
+  color: #1e293b;
+  font-weight: 800;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.instruction-text {
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* --- רשימת פיצ'רים (אנימציית כניסה) --- */
+.feature-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: reveal 0.5s forwards;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-item mat-icon {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.feature-item h3 { margin: 0; color: #f1f5f9; }
+.feature-item p { margin: 4px 0 0; color: #64748b; font-size: 0.95rem; }
+
+/* --- כפתורי ניווט בתוך הכרטיס --- */
+.auth-toggle { display: flex; justify-content: center; margin-bottom: 25px; }
+.nav-btn { text-decoration: none; color: #0f172a; font-weight: 600; padding: 10px 30px; transition: 0.3s; }
+.active-btn { color: #0284c7; border-bottom: 3px solid #0284c7; }
+
+.card-footer { margin-top: 20px; text-align: center; color: #64748b; font-size: 0.9rem; }
+.join-link { color: #0284c7; font-weight: 700; text-decoration: none; }
+
+/* --- אנימציות כלליות --- */
+.animate-fade-in { animation: fadeIn 1.2s ease-out; }
+.animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+.reveal-1 { animation-delay: 0.4s; }
+.reveal-2 { animation-delay: 0.6s; }
+.reveal-3 { animation-delay: 0.8s; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes reveal { to { opacity: 1; transform: translateX(0); } }
+
+/* התאמה לניידים - הסתרת החלק הכחול */
+@media (max-width: 1024px) {
+  .hero-section { display: none; }
+  .action-section { flex: 1; }
+}

@@ -1,0 +1,12 @@
+<div class="team-card">
+    <h3>{{ team().name }}</h3>
+    <p>Created at: {{ team().created_at }}</p>
+    <p>Members: {{ team().members_count }}</p>
+</div>
+
+<button (click)="teamClicked()">show project</button>
+
+@if(isAddingMember()) {
+  <app-add-member-team [teamId]="team().id" (cancel)="closeAddMember()" (teamSaved)="closeAddMember()"></app-add-member-team>
+}   
+<button (click)="addMember()">Add Member</button>

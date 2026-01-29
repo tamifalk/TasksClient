@@ -1,0 +1,30 @@
+<div class="comments-container">
+    <h2>Comments</h2>
+    @for(comment of comments(); track comment.id) {
+        <div class="comment-card">
+            <p><strong>{{ comment.author_name }}</strong> on {{ comment.created_at | date:'dd/MM/yyyy HH:mm' }}</p>
+            <p>{{ comment.body }}</p>
+        </div>
+    }@empty {
+        <p>No comments yet.</p>
+    }
+<div class="add-comment-container">
+    <h3>Create New Comment</h3>
+    
+        <mat-label>Comment Text</mat-label>
+        <input matInput [formControl]="commentText">
+
+        @if (commentText.hasError('required')) {
+        <mat-error>Comment text is required</mat-error>
+        }
+
+    <div class="actions">
+        <button mat-button type="button" (click)="onCloseComments()">Cancel</button>
+
+        <button (click)="onSubmit()">Save</button>
+    </div>
+</div>
+    
+</div>
+
+

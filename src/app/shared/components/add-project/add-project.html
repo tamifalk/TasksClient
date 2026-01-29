@@ -1,0 +1,30 @@
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="teams">Team:</label>
+        <mat-select id="teams" formControlName="teamId">
+            <option [ngValue]="null" disabled>Choose a team...</option>
+            @for (team of teams(); track team.id) {
+            <option [value]="team.id">{{ team.name }}</option>
+            }
+        </mat-select>
+    </div>
+    <div>
+        <label for="projectName">Project Name:</label>
+        <input id="projectName" formControlName="name" />
+        @if(projectForm.get('name')?.invalid && projectForm.get('name')?.touched) {
+        <span class="error">Name is required</span>
+        }
+    </div>
+    <div>
+        <label for="projectDescription">Description:</label>
+        <textarea id="projectDescription" formControlName="description"></textarea>
+        @if(projectForm.get('description')?.invalid && projectForm.get('description')?.touched) {
+        <span class="error">Description is required</span>
+        }
+    </div>
+    <button type="submit">Add Project</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+</form>
+
+

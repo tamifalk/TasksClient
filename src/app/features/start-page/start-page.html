@@ -1,0 +1,59 @@
+<div class="landing-container">
+  <div class="hero-section animate-fade-in">
+    <div class="rocket-orbit">
+      <mat-icon class="main-logo flying-rocket">rocket_launch</mat-icon>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">Master Your <br><span class="gradient-text">Workflow.</span></h1>
+      <p class="subtitle">The ultimate task management solution for teams who value speed, clarity, and results.</p>
+      
+      <div class="features-list">
+        <div class="feature-item reveal-1">
+          <mat-icon>group_work</mat-icon>
+          <div>
+            <h3>Real-time Collaboration</h3>
+            <p>Manage teams and projects in one synchronized workspace.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item reveal-2">
+          <mat-icon>insights</mat-icon>
+          <div>
+            <h3>Smart Tracking</h3>
+            <p>Get insights into your productivity and hit every deadline.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-3">
+          <mat-icon>security</mat-icon>
+          <div>
+            <h3>Enterprise Security</h3>
+            <p>Your data is protected with industrial-grade encryption.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <div class="glass-card animate-slide-up">
+      <div class="card-header">
+        <h2>Welcome Back</h2>
+        <p class="instruction-text">Please log in to your account to continue</p>
+      </div>
+
+      <nav class="auth-toggle">
+        <a routerLink="/login" routerLinkActive="active-btn" class="nav-btn">Login</a>
+      </nav>
+
+      <div class="outlet-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      
+      <div class="card-footer">
+        <p>Don't have an account? <a routerLink="/register" class="join-link">Request Access</a></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <h2>Add New Task</h2>
+
+    @if (!projectService.selectedProjectId()){
+    <div class="form-group">
+        <label for="project">Project:</label>
+        <select id="project" formControlName="projectId" class="form-control">
+            <option [ngValue]="null" disabled>Choose a project...</option>
+            @for (project of projects(); track project.id) {
+            <option [ngValue]="project.id">{{ project.name }}</option>
+            }
+        </select>
+    </div>
+    }
+
+
+    <div class="form-group">
+        <input id="title" formControlName="title" type="text" placeholder=" " />
+        <label for="title">Task Title</label>
+        @if(taskForm.get('title')?.invalid && taskForm.get('title')?.touched) {
+        <span class="error">Title is required</span>
+        }
+    </div>
+
+    <div class="form-group">
+        <textarea id="description" formControlName="description" placeholder=" "></textarea>
+        <label for="description">Task Description</label>
+        @if(taskForm.get('description')?.invalid && taskForm.get('description')?.touched) {
+        <span class="error">Description is required</span>
+        }
+    </div>
+
+    <button type="submit">Add Task</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+
+</form>

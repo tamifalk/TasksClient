@@ -1,0 +1,9 @@
+<div class="project-card">
+  <h3>{{ project().name }}</h3>
+  <p>Team: {{ teamName() }}</p>
+  <p>{{ project().description }}</p>
+  <p>Status: {{ project().status }}</p>
+  <p>Created at: {{ project().created_at }}</p>
+</div>
+
+<button (click)="projectClicked()">show tasks</button>

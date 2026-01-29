@@ -1,0 +1,32 @@
+<div class="card-inner">
+  
+  <div class="task-title">{{ task().title }}</div>
+
+  @if (viewMode() === 'board') {
+    <p class="task-desc">{{ task().description }}</p>
+  }
+
+    <select #prioritySelect (change)="updateField(task().id,{priority: prioritySelect.value})">
+      @for(option of priorities; track option) {
+      <option [value]="option" [selected]="option === task().priority">{{ option }}</option>
+      }
+    </select>
+
+    <select #statusSelect (change)="updateField(task().id,{status: statusSelect.value})">
+      @for(option of statuses; track option) {
+      <option [value]="option" [selected]="option === task().status">{{ option }}</option>
+      }
+    </select>
+
+  <div class="task-date">
+     📅 {{ task().due_date | date:'dd/MM/yyyy' }}
+
+    @if(isComments())
+    {
+      <div class="comments-section">
+        <app-comments [taskId]="task().id" (commentClose)="isComments.set(false)"></app-comments>
+      </div>
+    }
+  <button (click)="isComments.set(!isComments())">show comments</button>
+  <button (click)="onDelete()">Delete</button>
+</div>

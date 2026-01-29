@@ -1,0 +1,100 @@
+.modern-form {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 3rem 2.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  font-family: 'Inter', system-ui, sans-serif;
+  border: 1px solid #f0f0f5;
+}
+
+.modern-form h2 {
+  margin-bottom: 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+/* קונטיינר יחסי עבור הציפה */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* עיצוב השדה */
+.form-group input {
+  width: 100%;
+  padding: 1.2rem 1rem 0.6rem; /* רווח עליון גדול יותר בשביל התווית שתעלה */
+  font-size: 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* עיצוב התווית במצב התחלתי (בתוך השדה) */
+.form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: #94a3b8;
+  font-size: 1rem;
+  font-weight: 400;
+  pointer-events: none; /* מאפשר ללחוץ "דרך" התווית */
+  transition: all 0.2s ease;
+  background: transparent;
+  padding: 0 4px;
+}
+
+/* אפקט הציפה: כשלוחצים או כשיש טקסט */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  background: #ffffff; /* הרקע הלבן מסתיר את קו המסגרת של השדה */
+}
+
+/* שינוי צבע המסגרת בפוקוס */
+.form-group input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+/* כפתור מעוצב */
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: #1a1a1a; /* שחור עמוק למראה יוקרתי */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button[type="submit"]:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* הודעות שגיאה עדינות */
+.error {
+  display: block;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: #dc2626;
+  font-weight: 500;
+}

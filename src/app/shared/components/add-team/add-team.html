@@ -1,0 +1,23 @@
+<div class="add-team-container">
+    <h3>Create New Team</h3>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Team Name</mat-label>
+
+        <input matInput [formControl]="teamName">
+
+        @if (teamName.hasError('required')) {
+        <mat-error>Team name is required</mat-error>
+        }
+
+        @if (teamName.hasError('minlength')) {
+        <mat-error>Name must be at least 3 characters</mat-error>
+        }
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-button type="button" (click)="onCancel()">Cancel</button>
+
+        <button (click)="onSubmit()">Save</button>
+    </div>
+</div>
