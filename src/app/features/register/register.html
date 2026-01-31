@@ -1,2 +1,8 @@
-<app-auth-form mode="register" (formSubmitted)="onRegister($event)"></app-auth-form>
-<a routerLinkActive="active" routerLink="/login">Login</a>
+<div class="auth-page-wrapper">
+  <app-auth-form mode="register" (formSubmitted)="onRegister($event)"></app-auth-form>
+
+  <div class="auth-footer-links">
+    <span>You already have an account?</span>
+    <a routerLink="/login" routerLinkActive="active" class="secondary-link">Login</a>
+  </div>
+</div>

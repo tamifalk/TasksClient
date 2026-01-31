@@ -1,30 +1,46 @@
-<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+<div class="modal-backdrop" (click)="cancel()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
 
-    <div>
-        <label for="teams">Team:</label>
-        <mat-select id="teams" formControlName="teamId">
-            <option [ngValue]="null" disabled>Choose a team...</option>
-            @for (team of teams(); track team.id) {
-            <option [value]="team.id">{{ team.name }}</option>
-            }
+    <div class="modal-header">
+      <h3 class="title">New Project</h3>
+      <p class="subtitle">Fill in the details to get started</p>
+    </div>
+
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="modal-body">
+
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Select Team Space</mat-label>
+        <mat-select formControlName="teamId" placeholder="Select Team Space">
+          @for (team of teams(); track team.id) {
+          <mat-option [value]="team.id">{{ team.name }}</mat-option>
+          }
         </mat-select>
-    </div>
-    <div>
-        <label for="projectName">Project Name:</label>
-        <input id="projectName" formControlName="name" />
+        <mat-icon matSuffix class="input-icon">groups</mat-icon>
+        @if(projectForm.get('teamId')?.invalid && projectForm.get('teamId')?.touched) {
+        <mat-error>Team is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Project Name</mat-label>
+        <input matInput formControlName="name" placeholder="Project Name">
+        <mat-icon matSuffix class="input-icon">assignment</mat-icon>
         @if(projectForm.get('name')?.invalid && projectForm.get('name')?.touched) {
-        <span class="error">Name is required</span>
+        <mat-error>Name is required</mat-error>
         }
-    </div>
-    <div>
-        <label for="projectDescription">Description:</label>
-        <textarea id="projectDescription" formControlName="description"></textarea>
-        @if(projectForm.get('description')?.invalid && projectForm.get('description')?.touched) {
-        <span class="error">Description is required</span>
-        }
-    </div>
-    <button type="submit">Add Project</button>
-    <button type="button" (click)="cancel()">Cancel</button>
-</form>
+      </mat-form-field>
 
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="2" placeholder="Description"></textarea>
+        <mat-icon matSuffix class="input-icon">description</mat-icon>
+      </mat-form-field>
 
+      <div class="modal-actions">
+        <button matButton="tonal" type="button" (click)="cancel()">Cancel</button>
+        <button matButton="tonal" type="submit">Create Project</button>
+      </div>
+
+    </form>
+  </div>
+</div>

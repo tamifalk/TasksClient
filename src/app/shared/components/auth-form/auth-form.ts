@@ -1,10 +1,11 @@
 import { Component, inject, Input, Output, EventEmitter, input, output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginRequest, RegisterRequest } from '../../models/auth-model';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-auth-form',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, MatIcon],
   templateUrl: './auth-form.html',
   styleUrl: './auth-form.css',
 })

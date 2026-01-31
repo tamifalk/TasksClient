@@ -7,12 +7,15 @@ import { Teams } from './features/teams/teams';
 import { Projects } from './features/projects/projects';
 import { Component } from '@angular/core';
 import { Comments } from './features/comments/comments';
+import { authGuard } from './core/guard/auth.guard';
 
 export const routes: Routes = [
-    {path:'',component: StartPage},
-    {path:'login',component: Login},
-    {path:'register',component:Register},
-    {path:'tasks',component: Tasks,children: [{path:'comments', component:Comments}]},
-    {path:'teams',component: Teams},
-    {path:'projects',component: Projects}
+    { path: '', component: StartPage },
+    { path: 'login', component: Login },
+    { path: 'register', component: Register },
+    { path: 'tasks', component: Tasks, children: [{ path: 'comments', component: Comments }], canActivate: [authGuard] },
+    { path: 'teams', component: Teams, canActivate: [authGuard] },
+    { path: 'teams/:teamId/projects', component: Projects, canActivate: [authGuard] },
+    { path: 'projects', component: Projects, canActivate: [authGuard] },
+    { path: 'projects/:projectId/tasks', component: Tasks, canActivate: [authGuard] },
 ];

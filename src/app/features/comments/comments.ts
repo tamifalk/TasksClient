@@ -1,14 +1,19 @@
 import { Component, inject, input, output, signal } from '@angular/core';
 import { CommentsService } from '../../core/service/comments-service';
 import { CommentRequest, CommentResponse } from '../../shared/models/comments-model';
-import { DatePipe } from '@angular/common';
+import { DatePipe, UpperCasePipe } from '@angular/common';
 import { FormControl,ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatLabel, MatError } from "@angular/material/form-field";
+import { MatLabel, MatError, MatFormField, MatFormFieldModule } from "@angular/material/form-field";
 import { AuthService } from '../../core/service/auth-service';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-comments',
-  imports: [DatePipe,MatLabel, ReactiveFormsModule, MatError],
+  imports: [DatePipe, MatLabel, ReactiveFormsModule, MatError, MatFormField, UpperCasePipe,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule],
   templateUrl: './comments.html',
   styleUrl: './comments.css',
 })
@@ -17,6 +22,8 @@ export class Comments {
   authService = inject(AuthService);
   commentsOpen = output<void>();
   commentClose = output<void>();
+  authservice = inject(AuthService);
+  currntUser= this.authservice.user$;
 
   comments = signal<CommentResponse[]>([]);
     

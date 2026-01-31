@@ -1,0 +1,26 @@
+<nav class="sidebar">
+
+  <div class="nav-list">
+    <a routerLink="/teams" routerLinkActive="active" class="nav-item">
+      <mat-icon>groups</mat-icon>
+      <span>Teams</span>
+    </a>
+
+    <a routerLink="/projects" routerLinkActive="active" class="nav-item">
+      <mat-icon>folder_open</mat-icon>
+      <span>Projects</span>
+    </a>
+
+    <a routerLink="/tasks" routerLinkActive="active" class="nav-item">
+      <mat-icon>assignment_turned_in</mat-icon>
+      <span>Tasks</span>
+    </a>
+  </div>
+
+  
+  <div class="sidebar-footer">
+    <div class="user-avatar">
+      {{ userName }}
+    </div>
+  </div>
+</nav>

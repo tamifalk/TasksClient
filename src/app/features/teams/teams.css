@@ -1,0 +1,65 @@
+.page-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.main-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark-gray);
+}
+
+.page-subtitle {
+  margin: 8px 0 0 0;
+  color: var(--medium-gray);
+  font-size: 1rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--light-gray-border);
+  margin-bottom: 40px;
+}
+
+.teams-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 24px; 
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: var(--medium-gray);
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .btn-round-primary {
+    width: 100%; /* כפתור מלא בנייד */
+  }
+}

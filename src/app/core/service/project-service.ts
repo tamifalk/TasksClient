@@ -34,9 +34,10 @@ export class ProjectService {
   getProjectsByTeam = computed(() => {
     const teamId = this.teamsService.selectedTeamId(); 
     const allProjects = this._projects();
+    console.log('Filtering projects for team ID:', teamId,allProjects);
 
     if (!teamId) {
-      return []; 
+      return allProjects; 
     }
     return allProjects.filter(p => p.team_id === teamId);
   });

@@ -1,10 +1,12 @@
 import { Component, input, output, signal } from '@angular/core';
 import { TeamResponse } from '../../models/teams-model';
 import { AddMemberTeam } from "../add-member-team/add-member-team";
+import { MatIcon } from "@angular/material/icon";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-team-card',
-  imports: [AddMemberTeam],
+  imports: [AddMemberTeam, MatIcon, RouterLink, RouterLinkActive],
   templateUrl: './team-card.html',
   styleUrl: './team-card.css',
 })
@@ -22,7 +24,7 @@ export class TeamCard {
   }
 
   teamClicked(){
-    this.teamId.emit(this.team().id)
+    this.teamId.emit(this.team().id);
   }
 
 }

@@ -1,7 +1,8 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { TaskRequest, TaskResponse, TaskUpdateRequest } from '../../shared/models/task-model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { ProjectService } from './project-service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export class TasksService {
 
   private _tasks = signal<TaskResponse[]>([]);
   tasks$ = this._tasks.asReadonly();
+
+  clearTasks() {
+    this._tasks.set([]);
+  }
 
   getTasks() {
     return this.http.get<TaskResponse[]>(this.apiUrl).pipe(
@@ -39,7 +44,7 @@ export class TasksService {
     );
   }
 
-updateTask(id:number,task: TaskUpdateRequest) {
+  updateTask(id: number, task: TaskUpdateRequest) {
     return this.http.patch<TaskResponse>(`${this.apiUrl}/${id}`, task).pipe(
       tap({
         next: (updatedTask) => {
@@ -52,7 +57,7 @@ updateTask(id:number,task: TaskUpdateRequest) {
     );
   }
 
-deleteTask(id: number) {
+  deleteTask(id: number) {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
       tap({
         next: () => {
@@ -67,7 +72,7 @@ deleteTask(id: number) {
 
   getTasksByProjectId(projectId: number) {
     const params = new HttpParams().set('projectId', projectId);
-    return this.http.get<TaskResponse[]>(this.apiUrl, {params}).pipe(
+    return this.http.get<TaskResponse[]>(this.apiUrl, { params }).pipe(
       tap({
         next: (tasks) => {
           this._tasks.set(tasks);

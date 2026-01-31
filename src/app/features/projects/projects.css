@@ -1,0 +1,83 @@
+.page-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  /* החזרה ל-flex-end כדי שהכפתור והטקסט "יישבו" על אותו קו למטה */
+  align-items: flex-end; 
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.main-title {
+  margin: 0;
+  font-size: 2rem; /* חזרה ל-2rem המקורי */
+  font-weight: 800;
+  color: var(--dark-gray);
+}
+
+.page-subtitle {
+  margin: 8px 0 0 0;
+  color: var(--medium-gray);
+  font-size: 1rem;
+}
+
+.click-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.click-hint mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--clickup-blue); /* נותן נגיעת צבע עדינה */
+}
+
+/* מוודא שה-divider לא צמוד מדי להודעה */
+.divider {
+  border: none;
+  border-top: 1px solid var(--light-gray-border);
+  margin-top: 4px; /* רווח קטן מההודעה */
+  margin-bottom: 40px;
+}
+
+/* החזרת הגריד למרכז בדיוק כמו ב-teams */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 10px; 
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: var(--medium-gray);
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}

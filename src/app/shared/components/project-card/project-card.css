@@ -1,0 +1,109 @@
+.project-card {
+  width: 300px; 
+  min-height: 180px;
+  background: white;
+  max-width: 250px; 
+  border-radius: 20px;
+  border: 1px solid var(--light-gray-border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--clickup-blue);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.05rem; 
+  font-weight: 700;
+  color: var(--dark-gray);
+  line-height: 1.2;
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent; 
+  color: var(--clickup-blue);
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--medium-gray);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.team-info mat-icon { font-size: 16px; width: 16px; height: 16px; }
+
+.project-description {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--medium-gray);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.project-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f1f3f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #b2bec3;
+  font-size: 0.78rem;
+}
+
+.date-info mat-icon { font-size: 14px; width: 14px; height: 14px; }
+
+.arrow-icon {
+  color: var(--primary-color);
+  opacity: 0;
+  transition: 0.2s;
+  transform: translateX(-10px);
+}
+
+.project-card:hover .arrow-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-body, 
+.project-body p, 
+.project-body span {
+    color: var(--clickup-blue) !important;
+}

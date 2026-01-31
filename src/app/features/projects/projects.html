@@ -1,4 +1,40 @@
-@for(project of projectService.getProjectsByTeam(); track project.id) {   
+<div class="page-container">
+  <header class="page-header">
+    <div class="header-text">
+      <h1 class="main-title">Projects</h1>
+      <p class="page-subtitle">Select a project to manage its tasks and track progress.</p>
+    </div>
+
+    <button matButton="tonal" (click)="addProject()">
+      <mat-icon>add</mat-icon>
+      Add New Project
+    </button>
+  </header>
+  
+  <div class="click-hint">
+    <mat-icon>mouse</mat-icon>
+    <span>Click on any project to view its tasks</span>
+  </div>
+
+  <hr class="divider">
+
+  <main class="projects-grid">
+    @for(project of projectService.getProjectsByTeam(); track project.id) {   
+        <app-project-card [project]="project" (projectId)="showTasks($event)"></app-project-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>folder_open</mat-icon>
+        <p>No projects found. Start by creating your first project!</p>
+      </div>
+    }
+  </main>
+
+  @if(isAddingProject()) {
+      <app-add-project (closeAddProject)="closeAddProject()"></app-add-project>
+  }
+</div>
+
+<!-- @for(project of projectService.getProjectsByTeam(); track project.id) {   
     <app-project-card [project]="project" (projectId)="showTasks($event)"></app-project-card>
 }
 
@@ -14,4 +50,4 @@
 @if(isAddingProject()) {
     <app-add-project (closeAddProject)="closeAddProject()"></app-add-project>
 }
-<button (click)="addProject()">Add Project</button>
+<button (click)="addProject()">Add Project</button> -->

@@ -1,0 +1,45 @@
+/* שימוש באותו מבנה של המודאל */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(45, 55, 72, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000;
+}
+
+.modal-card {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.title { 
+  margin: 0; 
+  font-size: 22px; 
+  font-weight: 700; 
+  color: #1a202c; 
+}
+
+.subtitle { 
+  font-size: 14px; 
+  color: #718096; 
+  margin: 8px 0 24px 0; 
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.input-icon {
+  color: #cbd5e0;
+}

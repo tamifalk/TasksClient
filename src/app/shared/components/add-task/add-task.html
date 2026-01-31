@@ -1,36 +1,59 @@
-<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-    <h2>Add New Task</h2>
+<div class="modal-backdrop" (click)="cancel()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
 
-    @if (!projectService.selectedProjectId()){
-    <div class="form-group">
-        <label for="project">Project:</label>
-        <select id="project" formControlName="projectId" class="form-control">
-            <option [ngValue]="null" disabled>Choose a project...</option>
-            @for (project of projects(); track project.id) {
-            <option [ngValue]="project.id">{{ project.name }}</option>
-            }
-        </select>
+    <div class="modal-header">
+      <h3 class="title">New Task</h3>
+      <p class="subtitle">Fill in the details to get started</p>
     </div>
-    }
 
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="modal-body">
 
-    <div class="form-group">
-        <input id="title" formControlName="title" type="text" placeholder=" " />
-        <label for="title">Task Title</label>
+      @if (!projectService.selectedProjectId()) {
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Select Project</mat-label>
+        <mat-select formControlName="projectId" placeholder="Select Project">
+          <mat-option [value]="null" disabled>Choose a project...</mat-option>
+          @for (project of projects(); track project.id) {
+          <mat-option [value]="project.id">{{ project.name }}</mat-option>
+          }
+        </mat-select>
+        <mat-icon matSuffix class="input-icon">folder</mat-icon>
+        @if (taskForm.get('projectId')?.invalid && taskForm.get('projectId')?.touched) {
+        <mat-error>Please select a project</mat-error>
+        }
+      </mat-form-field>
+      }
+
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Task Title</mat-label>
+        <input matInput formControlName="title" placeholder="Task Title">
+        <mat-icon matSuffix class="input-icon">assignment</mat-icon>
         @if(taskForm.get('title')?.invalid && taskForm.get('title')?.touched) {
-        <span class="error">Title is required</span>
+        <mat-error>Title is required</mat-error>
         }
-    </div>
+      </mat-form-field>
 
-    <div class="form-group">
-        <textarea id="description" formControlName="description" placeholder=" "></textarea>
-        <label for="description">Task Description</label>
-        @if(taskForm.get('description')?.invalid && taskForm.get('description')?.touched) {
-        <span class="error">Description is required</span>
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="2" placeholder="Description"></textarea>
+        <mat-icon matSuffix class="input-icon">description</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Choose a date">
+        <mat-icon matSuffix class="input-icon" (click)="picker.open()">calendar_today</mat-icon>
+        <mat-datepicker #picker></mat-datepicker>
+        @if(taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched) {
+        <mat-error>Due date is required</mat-error>
         }
-    </div>
+      </mat-form-field>
 
-    <button type="submit">Add Task</button>
-    <button type="button" (click)="cancel()">Cancel</button>
+      <div class="modal-actions">
+        <button matButton="tonal" type="button" (click)="cancel()">Cancel</button>
+        <button matButton="tonal" type="submit">Add Task</button>
+      </div>
 
-</form>
+    </form>
+  </div>
+</div>

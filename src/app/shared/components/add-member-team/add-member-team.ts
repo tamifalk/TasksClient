@@ -4,10 +4,12 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatError, MatLabel, MatFormField } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../core/service/auth-service';
+import { MatIcon, MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-member-team',
-  imports: [MatError, MatLabel, MatFormField, ReactiveFormsModule, MatInputModule],
+  imports: [MatError, MatLabel, MatFormField, ReactiveFormsModule, MatInputModule, MatIcon,MatButtonModule, MatIconModule],
   templateUrl: './add-member-team.html',
   styleUrl: './add-member-team.css',
 })

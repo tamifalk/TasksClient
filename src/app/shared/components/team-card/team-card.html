@@ -1,12 +1,44 @@
-<div class="team-card">
-    <h3>{{ team().name }}</h3>
-    <p>Created at: {{ team().created_at }}</p>
-    <p>Members: {{ team().members_count }}</p>
-</div>
+<a class="team-card btn" [routerLink]="['/teams', team().id, 'projects']">
+  <div class="card-top-section">
+    <div class="illustration-placeholder">
+      <div class="sketch-line long"></div>
+      <div class="sketch-line short"></div>
+      <div class="sketch-line medium"></div>
+    </div>
+    
+    <div class="team-avatar-circle">
+      {{ team().name.slice(0,1).toUpperCase() }}
+    </div>
+  </div>
 
-<button (click)="teamClicked()">show project</button>
+  <div class="card-bottom-info">
+    <div class="info-action-row">
+      
+      <div class="team-details-left">
+        <h3 class="team-name">{{ team().name }}</h3>
+        <span class="members-text">{{ team().members_count }} members</span>
+      </div>
 
+      <button class="btn-add-member-small" (click)="$event.preventDefault(); $event.stopPropagation(); addMember()" title="Add Member">
+        <mat-icon>person_add_alt</mat-icon>
+      </button>
+
+    </div>
+  </div>
+
+  
+</a>
 @if(isAddingMember()) {
-  <app-add-member-team [teamId]="team().id" (cancel)="closeAddMember()" (teamSaved)="closeAddMember()"></app-add-member-team>
-}   
-<button (click)="addMember()">Add Member</button>
+    <div class="overlay-container fixed-overlay-wrapper">
+       <app-add-member-team 
+          [teamId]="team().id" 
+          (cancel)="closeAddMember()" 
+          (teamSaved)="closeAddMember()">
+        </app-add-member-team>
+    </div>
+  }
+
+
+<!-- <button class="btn-show-projects" (click)="teamClicked()">
+        Show Project
+      </button> -->

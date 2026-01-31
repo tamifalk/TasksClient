@@ -3,11 +3,12 @@ import { TeamsService } from '../../core/service/teams-service';
 import { TeamCard } from "../../shared/components/team-card/team-card";
 import { AddTeam } from "../../shared/components/add-team/add-team";
 import { ProjectService } from '../../core/service/project-service';
-import { Projects } from "../projects/projects";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-teams',
-  imports: [TeamCard, AddTeam, Projects],
+  imports: [TeamCard, AddTeam, MatButtonModule, MatIconModule],
   templateUrl: './teams.html',
   styleUrl: './teams.css',
 })

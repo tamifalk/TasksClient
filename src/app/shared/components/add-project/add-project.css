@@ -1,0 +1,96 @@
+/* רקע המודאל - טשטוש ומרכוז */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(45, 55, 72, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000;
+}
+
+/* כרטיס המודאל - לבן ומעוגל */
+.modal-card {
+  background: white;
+  width: 90%;
+  max-width: 380px; /* צמצום רוחב המודאל בדיוק כמו בפרויקט */
+  border-radius: 25px;
+  padding: 30px; /* צמצום פדינג פנימי */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* כותרת */
+.title { 
+  margin: 0; 
+  font-size: 22px; 
+  font-weight: 800; 
+  color: #1a202c; 
+}
+
+/* כותרת משנית */
+.subtitle { 
+  font-size: 13px; 
+  color: #718096; 
+  margin: 6px 0 20px 0; 
+}
+
+/* גוף הטופס */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* צמצום משמעותי של הרווח בין השדות */
+}
+
+/* התאמת צפיפות לשדות של Material */
+.modern-field.compact {
+  width: 100%;
+  margin-bottom: -4px; /* "משיכה" של השדות אחד לשני בדיוק כמו בפרויקט */
+}
+
+/* הקטנת הגובה של ה-Select/Input כדי שיהיה צפוף */
+::ng-deep .compact .mat-mdc-form-field-infix {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  min-height: 40px !important;
+}
+
+/* כפתורי פעולה בתחתית */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* אייקונים בתוך השדות */
+.input-icon {
+  color: #cbd5e0;
+  font-size: 20px;
+}
+
+/* מניעת הגדלה של טקסט אופקי */
+textarea.mat-mdc-input-element {
+  resize: none;
+}
+
+/* עיצוב כפתור ה-Submit שיהיה חתיך כמו שאר המערכת */
+.submit-btn {
+  background-color: #7b68ee !important;
+  color: white !important;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-btn:disabled {
+  background-color: #cbd5e0 !important;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #6a56e5 !important;
+}

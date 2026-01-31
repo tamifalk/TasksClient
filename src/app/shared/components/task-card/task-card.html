@@ -1,32 +1,46 @@
-<div class="card-inner">
-  
-  <div class="task-title">{{ task().title }}</div>
+<div class="task-card" [ngClass]="viewMode()" [attr.data-status]="task().status">
+  <div class="card-inner">
+    <div class="content-wrapper">
 
-  @if (viewMode() === 'board') {
-    <p class="task-desc">{{ task().description }}</p>
-  }
+      <div class="task-title" [title]="task().title">{{ task().title }}</div>
 
-    <select #prioritySelect (change)="updateField(task().id,{priority: prioritySelect.value})">
-      @for(option of priorities; track option) {
-      <option [value]="option" [selected]="option === task().priority">{{ option }}</option>
-      }
-    </select>
+      <select class="status-select" #statusSelect (change)="updateField(task().id,{status: statusSelect.value})"
+        [style.backgroundColor]="getStatusColor(task().status)" [attr.data-status]="task().status || ''">
+        @for(option of statuses; track option) {
+        <option [value]="option" [selected]="option === task().status">{{ option }}</option>
+        }
+      </select>
 
-    <select #statusSelect (change)="updateField(task().id,{status: statusSelect.value})">
-      @for(option of statuses; track option) {
-      <option [value]="option" [selected]="option === task().status">{{ option }}</option>
-      }
-    </select>
+      <select class="priority-select" #prioritySelect (change)="updateField(task().id,{priority: prioritySelect.value})"
+        [attr.data-priority]="task().priority || ''">
+        @for(option of priorities; track option) {
+        <option [value]="option" [selected]="option === task().priority">{{ option }}</option>
+        }
+      </select>
 
-  <div class="task-date">
-     📅 {{ task().due_date | date:'dd/MM/yyyy' }}
-
-    @if(isComments())
-    {
-      <div class="comments-section">
-        <app-comments [taskId]="task().id" (commentClose)="isComments.set(false)"></app-comments>
+      <div class="task-date">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ task().due_date | date:'dd/MM/yyyy' }}</span>
       </div>
+
+      <div class="actions">
+        <button class="icon-btn" (click)="isComments.set(!isComments())">
+          <mat-icon>chat_bubble_outline</mat-icon>
+        </button>
+        <button class="icon-btn delete" (click)="onDelete()">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+    @if (isComments()) {
+    <div class="comments-section">
+      <app-comments 
+      [taskId]="task().id" 
+      (commentClose)="isComments.set(false)">
+    </app-comments>
+    </div>
     }
-  <button (click)="isComments.set(!isComments())">show comments</button>
-  <button (click)="onDelete()">Delete</button>
-</div>
+  </div>

@@ -4,11 +4,16 @@ import { ProjectCard } from "../../shared/components/project-card/project-card";
 import { AddProject } from "../../shared/components/add-project/add-project";
 import { TasksService } from '../../core/service/tasks-service';
 import { Tasks } from "../tasks/tasks";
+import { AsyncPipe } from '@angular/common';
+import { TeamsService } from '../../core/service/teams-service';
+import { ActivatedRoute } from '@angular/router';
+import { MatIcon, MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-projects',
-  imports: [ProjectCard, AddProject, Tasks],
+  imports: [ProjectCard, AddProject, MatIcon, MatButtonModule, MatIconModule],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
@@ -17,9 +22,18 @@ export class Projects {
   projects = this.projectService.projects$;
   taskService = inject(TasksService);
   isAddingProject = signal(false);
+  teamsService = inject(TeamsService);
+  route = inject(ActivatedRoute);
 
   ngOnInit() {
+    const teamId = this.route.snapshot.paramMap.get('teamId');
+    if (teamId) {
+      this.teamsService.selectedTeamId.set(Number(teamId));
+    }
+    else {
+    this.teamsService.selectedTeamId.set(null);
     this.projectService.getProjects().subscribe();
+    }
   }
 
   addProject() {

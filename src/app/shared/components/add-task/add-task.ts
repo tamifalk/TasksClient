@@ -2,10 +2,26 @@ import { Component, inject, input, output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TasksService } from '../../../core/service/tasks-service';
 import { ProjectService } from '../../../core/service/project-service';
+import { MatError, MatFormField, MatFormFieldModule, MatLabel } from "@angular/material/form-field";
+import { MatIcon, MatIconModule } from "@angular/material/icon";
+import { MatOption, MatSelectModule } from "@angular/material/select";
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; // נדרש כדי שהדאטפיקר יבין פורמט תאריכים סטנדרטי
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-add-task',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule, // חייב בשביל שהטופס והכפתור יעבדו
+    MatFormFieldModule,  // חייב בשביל העיצוב של השדה
+    MatInputModule,      // חייב בשביל ה-matInput
+    MatSelectModule,     // חייב בשביל ה-mat-select
+    MatButtonModule,     // חייב בשביל שכפתורי ה-Material יגיבו
+    MatIconModule,MatFormFieldModule, 
+    MatInputModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, // חשוב מאוד! בלי זה הלוח שנה לא ייפתח
+    MatIconModule,],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
   host: {
@@ -29,7 +45,7 @@ export class AddTask {
       projectId: [null, Validators.required],
       title: ['', Validators.required],
       description: [''],
-      dueDate: [''],
+      dueDate: ['', Validators.required],
     });
   }
 
@@ -37,7 +53,7 @@ export class AddTask {
     this.projectService.getProjects().subscribe();
     const preselectedId = this.projectService.selectedProjectId();
     if (preselectedId) {
-      this.taskForm.patchValue({ project_id: preselectedId });
+      this.taskForm.patchValue({ projectId: preselectedId });
     }
   }
 

@@ -1,15 +1,30 @@
-@for(team of teams(); track team.id) {
-<app-team-card [team]="team" (teamId)="showTeams($event)"></app-team-card>
-}
+<div class="page-container">
+  <header class="page-header">
+    <div class="header-text">
+      <h1 class="main-title">My Teams</h1>
+      <p class="page-subtitle">Manage your organization's teams and members in one place.</p>
+    </div>
 
-<hr />
-@if(teamsService.selectedTeamId()) {
-<h2>Projects in Selected Team</h2>
-<app-projects></app-projects>
-}
+    <button matButton="tonal" (click)="onAddTeam()">
+      <mat-icon>add</mat-icon>
+      Add New Team
+    </button>
+  </header>
 
+  <hr class="divider">
 
-@if(isAddingTeam()) {
-<app-add-team (cancel)="closeAddTeam()" (teamSaved)="closeAddTeam()"></app-add-team>
-}
-<button (click)="onAddTeam()">Add Team</button>
+  <main class="teams-grid">
+    @for(team of teams(); track team.id) {
+      <app-team-card [team]="team" (teamId)="showTeams($event)"></app-team-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>group_off</mat-icon>
+        <p>No teams found. Start by creating your first team!</p>
+      </div>
+    }
+  </main>
+
+  @if(isAddingTeam()) {
+    <app-add-team (cancel)="closeAddTeam()" (teamSaved)="closeAddTeam()"></app-add-team>
+  }
+</div>

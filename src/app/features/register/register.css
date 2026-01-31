@@ -1,26 +1,40 @@
-.modern-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; }
-
-.field-container { display: flex; flex-direction: column; }
-
-/* עיצוב שדה לא תקין */
-input.is-invalid {
-  border: 2px solid #ff4d4d;
-  background-color: #fff5f5;
+.auth-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.error-msg {
-  color: #ff4d4d;
-  font-size: 0.85rem;
-  margin-top: 4px;
-  font-weight: bold;
+.auth-footer-links {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: var(--medium-gray);
+  text-align: center;
+  animation: fadeIn 1s ease-in;
 }
 
-.submit-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+.secondary-link {
+  color: var(--clickup-blue);
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
-.submit-btn:disabled { background-color: #ccc; }
+.secondary-link:hover {
+  background-color: rgba(8, 128, 234, 0.08); 
+  color: #0066cc; 
+  text-decoration: underline;
+}
+
+.secondary-link.active {
+  color: var(--dark-gray);
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

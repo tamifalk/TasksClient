@@ -1,9 +1,26 @@
-<div class="project-card">
-  <h3>{{ project().name }}</h3>
-  <p>Team: {{ teamName() }}</p>
-  <p>{{ project().description }}</p>
-  <p>Status: {{ project().status }}</p>
-  <p>Created at: {{ project().created_at }}</p>
-</div>
+<a class="project-card" [routerLink]="['/projects', project().id, 'tasks']">
+  <div class="project-header">
+    <h3 class="project-title">{{ project().name }}</h3>
+    <span class="status-badge" [attr.data-status]="project().status">
+      {{ project().status }}
+    </span>
+  </div>
 
-<button (click)="projectClicked()">show tasks</button>
+  <div class="project-body">
+    <div class="team-info">
+      <mat-icon>group</mat-icon>
+      <span>{{ teamName() }}</span>
+    </div>
+    
+    <p class="project-description">{{ project().description }}</p>
+  </div>
+
+  <div class="project-footer">
+    <div class="date-info">
+      <mat-icon>calendar_today</mat-icon>
+      <span>{{ project().created_at | date:'shortDate' }}</span>
+    </div>
+    
+    <mat-icon class="arrow-icon">chevron_right</mat-icon>
+  </div>
+</a>
