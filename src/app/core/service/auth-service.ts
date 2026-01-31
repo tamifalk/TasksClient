@@ -3,6 +3,8 @@ import { inject, Injectable, signal } from '@angular/core';
 import { AuthResponse, AuthUser, LoginRequest, RegisterRequest } from '../../shared/models/auth-model';
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { NotificationService } from './notification-service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private notify = inject(NotificationService);
+  private apiUrl = `${environment.apiUrl}/auth`;
   private router = inject(Router);
 
   private _user = signal<AuthUser | null>(null);
@@ -23,8 +26,7 @@ export class AuthService {
 
   private loadUserFromStorage() {
     const token = localStorage.getItem('token');
-    if (!token)
-    {
+    if (!token) {
       this.isReady.set(true);
       return;
     }
@@ -44,6 +46,7 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this._user();
   }
+
   Register(request: RegisterRequest) {
     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, request).pipe(
       tap({
@@ -57,8 +60,9 @@ export class AuthService {
           this.isReady.set(true);
         },
         error: (err) => {
-          
-          //create a commponnent to show error messages
+          if (err.status === 409) {
+            this.notify.showError('This email is already registered.');
+          }
         }
       })
     );
@@ -77,7 +81,9 @@ export class AuthService {
           this.isReady.set(true);
         },
         error: (err) => {
-          //create a commponnent to show error messages
+          if (err.status === 401 || err.status === 400) {
+            this.notify.showError('Invalid email or password.');
+          }
         }
       })
     );
@@ -86,8 +92,6 @@ export class AuthService {
   Logout() {
     localStorage.removeItem('token');
     this._user.set(null);
-    //navigate to home page
     this.router.navigate(['/login']);
   }
-
 }

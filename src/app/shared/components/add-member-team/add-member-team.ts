@@ -1,27 +1,36 @@
 import { Component, inject, input, output } from '@angular/core';
 import { TeamsService } from '../../../core/service/teams-service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatError, MatLabel, MatFormField } from "@angular/material/form-field";
+import { MatError, MatLabel, MatFormField, MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../core/service/auth-service';
 import { MatIcon, MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
+import { UsersService } from '../../../core/service/users-service';
+import { MatOption, MatSelectModule } from "@angular/material/select";
 
 @Component({
   selector: 'app-add-member-team',
-  imports: [MatError, MatLabel, MatFormField, ReactiveFormsModule, MatInputModule, MatIcon,MatButtonModule, MatIconModule],
+  imports: [MatError, MatLabel, MatFormField, ReactiveFormsModule, MatInputModule, MatIcon, MatButtonModule, MatIconModule, MatOption,ReactiveFormsModule,
+  MatSelectModule,      // חובה!
+  MatFormFieldModule,],
   templateUrl: './add-member-team.html',
   styleUrl: './add-member-team.css',
 })
 export class AddMemberTeam {
   teamService = inject(TeamsService);
   authService = inject(AuthService);
-  userId = new FormControl('', [Validators.required]);
+  usersService = inject(UsersService);
+
+  userId = new FormControl<number | null>(null, [Validators.required]);
   teamId = input<number>();
 
   teamSaved = output<void>();
   cancel = output<void>();
 
+ngOnInit() {
+    this.usersService.getUsers().subscribe();
+  }
 
   onSubmit() {
     if (this.userId.valid) {
@@ -39,6 +48,7 @@ export class AddMemberTeam {
     }
     else {
       this.userId.markAsTouched();
+      this.userId.markAsDirty();
     }
   }
 

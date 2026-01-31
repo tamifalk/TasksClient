@@ -3,13 +3,16 @@ import { TaskRequest, TaskResponse, TaskUpdateRequest } from '../../shared/model
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { ProjectService } from './project-service';
+import { NotificationService } from './notification-service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/tasks';
+  private notify = inject(NotificationService);
+  private apiUrl = `${environment.apiUrl}/tasks`;
 
   private _tasks = signal<TaskResponse[]>([]);
   tasks$ = this._tasks.asReadonly();
@@ -24,9 +27,6 @@ export class TasksService {
         next: (tasks) => {
           this._tasks.set(tasks);
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -36,10 +36,8 @@ export class TasksService {
       tap({
         next: (newTask) => {
           this._tasks.update((tasks) => [...tasks, newTask]);
+          this.notify.showSuccess('Task added successfully');
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -50,9 +48,6 @@ export class TasksService {
         next: (updatedTask) => {
           this._tasks.update((tasks) => tasks.map(t => t.id === updatedTask.id ? updatedTask : t));
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -62,10 +57,8 @@ export class TasksService {
       tap({
         next: () => {
           this._tasks.update((tasks) => tasks.filter(t => t.id !== id));
+          this.notify.showSuccess('Task deleted successfully');
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -77,9 +70,6 @@ export class TasksService {
         next: (tasks) => {
           this._tasks.set(tasks);
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }

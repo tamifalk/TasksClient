@@ -1,45 +1,80 @@
-/* קונטיינר ראשי שעוטף הכל */
+/* קונטיינר ראשי - Flexbox אנכי */
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* גובה מסך מלא */
-  width: 100%;
-  overflow: hidden; /* מונע גלילה כפולה של כל הדף */
-}
-
-/* המעטפת של הסיידבר והתוכן - מתחת להדר */
-.main-wrapper {
-  display: flex;
-  flex: 1; /* לוקח את כל שאר הגובה שנשאר */
+  height: 100vh;
   width: 100%;
   overflow: hidden;
 }
 
+/* מבטיח שההדר לא יתכווץ ויתפוס רק את הגובה שלו */
+app-header {
+  flex-shrink: 0;
+  z-index: 101; /* גבוה יותר מהסיידבר */
+}
+
+/* המעטפת של הסיידבר והתוכן */
+.main-wrapper {
+  display: flex;
+  flex: 1; /* לוקח את כל הגובה הנותר מתחת להדר */
+  width: 100%;
+  overflow: hidden;
+  position: relative; /* חשוב עבור המיקום של הסיידבר במובייל */
+}
+
 .sidebar-container {
-  width: 72px; 
+  width: 72px;
   flex-shrink: 0;
   border-right: 1px solid #e2e8f0;
   background-color: #ffffff;
+  height: 100%;
 }
 
 .content-container {
   flex-grow: 1;
-  /* הסרנו את ה-margin-left כי ה-flex דואג לזה */
-  overflow-y: auto; /* רק התוכן המרכזי יתגלול */
+  overflow-y: auto;
   background-color: #f8fafc;
-  box-sizing: border-box;
+}
+
+.content-container {
+  display: flex;         /* הופך את אזור התוכן למיכל גמיש */
+  flex-direction: column; /* מסדר את התוכן והפוטר אחד מתחת לשני */
+  flex-grow: 1;
+  overflow-y: auto;       /* מאפשר גלילה רק כאן */
+  background-color: #f8fafc;
+}
+
+/* מחלקה חדשה שתעטוף את ה-router-outlet */
+.router-wrapper {
+  flex: 1; /* לוקח את כל השטח הפנוי ודוחף את הפוטר למטה */
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  flex-shrink: 0; 
+}
+
+/* סגנון לסרגל טעינה גלובלי */
+.global-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10001;
+  height: 4px;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* התאמה לניידים */
 @media (max-width: 1024px) {
-  .main-wrapper {
-    position: relative;
-  }
-  
   .sidebar-container {
     position: absolute;
-    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%; /* ימלא את כל הגובה של main-wrapper בלבד */
     z-index: 100;
-    /* כאן אפשר להוסיף לוגיקה של הסתרה/הצגה אם תרצי */
+    /* הוספת צל כדי להפריד מהתוכן כשהוא צף */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   }
 }

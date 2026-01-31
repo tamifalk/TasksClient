@@ -4,13 +4,14 @@ import { TeamsService } from '../../../core/service/teams-service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-team',
   imports: [ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule],
+    MatButtonModule,MatIconModule],
   templateUrl: './add-team.html',
   styleUrl: './add-team.css',
 })
@@ -31,6 +32,7 @@ export class AddTeam {
     }
     else {
       this.teamName.markAsTouched();
+      this.teamName.markAsDirty();
     }
   }
 

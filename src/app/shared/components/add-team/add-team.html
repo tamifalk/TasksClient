@@ -10,13 +10,10 @@
       <mat-form-field appearance="outline" class="modern-field">
         <mat-label>Team Name</mat-label>
         <input matInput [formControl]="teamName">
-        <mat-icon matSuffix class="input-icon"></mat-icon>
+        <mat-icon matSuffix class="input-icon">groups</mat-icon>
 
-        @if (teamName.hasError('required')) {
+        @if (teamName.hasError('required')&&teamName.dirty) {
           <mat-error>Team name is required</mat-error>
-        }
-        @if (teamName.hasError('minlength')) {
-          <mat-error>Name must be at least 3 characters</mat-error>
         }
       </mat-form-field>
     </div>

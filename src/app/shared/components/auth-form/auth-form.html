@@ -1,12 +1,16 @@
 <div class="auth-wrapper">
   <div class="auth-container">
-    
+
     <div class="info-side">
       <div class="info-content">
-        <mat-icon class="rocket-icon">rocket_launch</mat-icon>
+        <div class="auth-logo">
+          Task<span class="logo-dot"></span>Flow
+        </div>
+
         <h3 class="info-title">The platform built for <span class="highlight">new era</span> of work.</h3>
-        <p class="info-text">Stop juggling apps. Start getting things done with the ultimate task management solution.</p>
-        
+        <p class="info-text">Stop juggling apps. Start getting things done with the ultimate task management solution.
+        </p>
+
         <div class="mini-features">
           <div class="m-feat"><mat-icon>check_circle</mat-icon> Unlimited Tasks</div>
           <div class="m-feat"><mat-icon>check_circle</mat-icon> Team Collaboration</div>
@@ -22,8 +26,12 @@
         <div class="form-group">
           <input id="name" formControlName="name" type="text" placeholder=" " />
           <label for="name">Full Name</label>
-          @if(userForm.get('name')?.invalid && userForm.get('name')?.touched) {
-            <span class="error">Name is required</span>
+          @if(userForm.get('name')?.invalid && userForm.get('name')?.dirty) {
+          <span class="error">
+            @if(userForm.get('name')?.errors?.['required']) { Name is required }
+            @else if(userForm.get('name')?.errors?.['minlength']) { At least 2 characters }
+            @else if(userForm.get('name')?.errors?.['pattern']) { Letters only, please }
+          </span>
           }
         </div>
         }
@@ -31,16 +39,22 @@
         <div class="form-group">
           <input id="email" formControlName="email" type="email" placeholder=" " />
           <label for="email">Email Address</label>
-          @if(userForm.get('email')?.invalid && userForm.get('email')?.touched) {
-            <span class="error">Invalid email address</span>
+          @if(userForm.get('email')?.invalid && userForm.get('email')?.dirty) {
+          <span class="error">
+            @if(userForm.get('email')?.errors?.['required']) { Email is required }
+            @else if(userForm.get('email')?.errors?.['pattern']) { Please enter a valid email address }
+          </span>
           }
         </div>
 
         <div class="form-group">
           <input id="password" formControlName="password" type="password" placeholder=" " />
           <label for="password">Password</label>
-          @if(userForm.get('password')?.invalid && userForm.get('password')?.touched) {
-            <span class="error">Password is required</span>
+          @if(userForm.get('password')?.invalid && userForm.get('password')?.dirty) {
+          <span class="error">
+            @if(userForm.get('password')?.errors?.['required']) { Password is required }
+            @else if(userForm.get('password')?.errors?.['minlength']) { Password must be at least 4 characters }
+          </span>
           }
         </div>
 

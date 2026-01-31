@@ -51,13 +51,13 @@ export class AddProject {
         next: () => {
           this.closeAddProject.emit();
         },
-        error: (error) => {
-          //crete component to show error message
-        }
       });
     }
     else {
       this.projectForm.markAllAsTouched();
+      Object.values(this.projectForm.controls).forEach(control => {
+      control.markAsDirty();
+    });
     }
   }
 

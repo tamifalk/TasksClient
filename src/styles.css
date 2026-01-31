@@ -1,38 +1,34 @@
 :root {
   /* צבעי רקע ומשטח */
-  --bg-main: #ffffff;           /* רקע לבן נקי */
-  --bg-sidebar: #f7f8f9;        /* אפור בהיר מאוד לסיידבר */
-  --bg-card: #ffffff;           /* רקע כרטיס משימה */
+  --bg-main: #ffffff;
+  --bg-sidebar: #f7f8f9;
+  --bg-card: #ffffff;
   
-  /* אפורים (התוספת שביקשת) */
-  --dark-gray: #292d34;         /* אפור כהה מאוד לכותרות וטקסט ראשי */
-  --medium-gray: #636e72;       /* אפור בינוני לטקסט משני */
-  --light-gray-border: #e8eaed; /* צבע גבולות (Borders) */
+  /* אפורים */
+  --dark-gray: #292d34;
+  --medium-gray: #636e72;
+  --light-gray-border: #e8eaed;
 
-  /* צבעי הסטטוס המדויקים מהתמונה */
-  --clickup-blue: rgb(8, 128, 234);     /* In Progress */
-  --clickup-green: rgb(41, 151, 100);     /* Complete */
-  --clickup-red: rgb(229, 72, 77);        /* To Do */
+  /* צבעי הסטטוס */
+  --clickup-blue: rgb(8, 128, 234);
+  --clickup-green: rgb(41, 151, 100);
+  --clickup-red: rgb(229, 72, 77);
+  
+  --primary-color: #7b68ee;
 }
 
+/* --- כפתורים מעוגלים --- */
 .mat-mdc-button, 
 .mat-mdc-raised-button, 
 .mat-mdc-unelevated-button, 
 .mat-mdc-outlined-button,
 .mat-mdc-flat-button {
-    /* מונע מהכפתור להימתח לרוחב ההורה בתוך Flex */
     align-self: center !important; 
-    
-    /* רוחב שמתאים בדיוק לטקסט */
     width: fit-content !important; 
-    min-width: 120px !important; /* רוחב מינימלי חמוד כדי שלא יהיה "פצפון" */
-    
-    /* עיצוב עגול וגובה נוח */
+    min-width: 120px !important; 
     border-radius: 50px !important; 
     height: 40px !important;
     padding: 0 20px !important;
-    
-    /* ניקוי טקסט */
     text-transform: none !important;
     font-weight: 600 !important;
     display: inline-flex !important;
@@ -40,53 +36,85 @@
     justify-content: center;
 }
 
-/* 2. הגדרה ספציפית לכפתורי ה-Tonal (הסגולים החמודים) */
 .btn-round-primary {
-    background-color: var(--primary-color, #7b68ee) !important;
+    background-color: var(--primary-color) !important;
     color: white !important;
 }
 
-/* 3. הגדרה לכפתורי ביטול/אפורים */
 .btn-round-secondary {
     background-color: transparent !important;
-    color: var(--medium-gray, #a0aec0) !important;
+    color: var(--medium-gray) !important;
 }
-/* styles.css */
 
-/* עיצוב גלובלי לשדות קלט מעוגלים ונקיים */
+/* --- עיצוב שדות קלט (Modern Field) --- */
+
 .mat-mdc-form-field.modern-field {
   width: 100%;
 }
 
-/* 1. תיקון המסגרת מסביב לטקסט (ביטול ה-Notch) */
+/* 1. תיקון הפינות - עיגול רק בקצוות החיצוניים למניעת הקשת הכפולה */
+.mat-mdc-form-field.modern-field .mdc-notched-outline__leading {
+  border-radius: 25px 0 0 25px !important; /* עיגול חיצוני שמאלי בלבד */
+  width: 22px !important; /* מרחיב את ההתחלה ליצירת קימור יפה */
+  border-right: none !important;
+}
+
 .mat-mdc-form-field.modern-field .mdc-notched-outline__notch {
   border-left: none !important;
   border-right: none !important;
-  width: 0 !important; /* מבטל את המרווח שנוצר עבור הלייבל */
+  border-radius: 0 !important; /* ביטול קימורים באמצע שיוצרים עיוות */
 }
 
-/* 2. מניעת חיתוך הקו העליון כשהלייבל צף */
-.mat-mdc-form-field.modern-field.mat-form-field-should-float .mdc-notched-outline__notch {
+.mat-mdc-form-field.modern-field .mdc-notched-outline__trailing {
+  border-radius: 0 25px 25px 0 !important; /* עיגול חיצוני ימני בלבד */
+  border-left: none !important;
+}
+
+/* 2. סגירת ה-Notch (החור בקו העליון) */
+/* זה מוודא שהמסגרת תהיה רציפה גם כשהלייבל צף או כשיש פלייסholder */
+.mat-mdc-form-field.modern-field .mdc-notched-outline__notch {
+  width: auto !important;
   border-top: 2px solid #edf2f7 !important;
 }
 
-/* 3. עיצוב המסגרת כרציפה ומעוגלת */
+/* 3. צבעי מסגרת ורוחב */
 .mat-mdc-form-field.modern-field .mdc-notched-outline__leading,
 .mat-mdc-form-field.modern-field .mdc-notched-outline__notch,
 .mat-mdc-form-field.modern-field .mdc-notched-outline__trailing {
-  border-radius: 25px !important; /* שדה עגול וחמוד */
   border-color: #edf2f7 !important;
   border-width: 2px !important;
 }
 
-/* 4. שינוי צבע המסגרת בפוקוס (סגול) */
+/* 4. פוקוס (סגול) */
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__leading,
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__notch,
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__trailing {
-  border-color: var(--primary-color, #7b68ee) !important;
+  border-color: var(--primary-color) !important;
 }
 
-/* עיצוב האייקונים בתוך השדה */
+/* 5. תיקון פלייסהולדר - לוודא שהוא לא נתקע בלייבל */
+/* כדי שהפלייסהולדר יופיע מיד, ודאי שב-HTML יש floatLabel="always" */
+.mat-mdc-form-field.modern-field .mdc-floating-label {
+  display: none !important; /* מסתירים את הלייבל המקורי כדי שהפלייסהולדר ישלוט */
+}
+
+/* אייקונים */
 .mat-mdc-form-field.modern-field .mat-icon {
   color: #cbd5e0;
+  transition: color 0.2s;
+}
+
+.mat-mdc-form-field.modern-field.mat-form-field-focused .mat-icon {
+  color: var(--primary-color);
+}
+
+/* סנקבארים */
+.error-snackbar {
+  --mdc-snackbar-container-color: #f44336;
+  color: white;
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: #4caf50;
+  color: white;
 }

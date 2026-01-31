@@ -13,7 +13,7 @@ export class Sidebar {
   authService=inject(AuthService);
   //מחזיר את ראשי התיבות של שם המשתמש
   get userName(): string {
-    const name = this.authService.user$.name || ''; 
+    const name = this.authService.user$()?.name || ''; 
 
     const parts = name.trim().split(' ');
     if (parts.length >= 2) {

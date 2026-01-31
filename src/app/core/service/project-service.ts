@@ -3,13 +3,16 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { ProjectRequest, ProjectResponse } from '../../shared/models/project-model';
 import { tap } from 'rxjs';
 import { TeamsService } from './teams-service';
+import { NotificationService } from './notification-service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/projects';
+  private notify = inject(NotificationService);
+  private apiUrl = `${environment.apiUrl}/projects`;
 
   private teamsService = inject(TeamsService);
   private _projects = signal<ProjectResponse[]>([]);
@@ -23,9 +26,6 @@ export class ProjectService {
         next: (projects: ProjectResponse[]) => {
           this._projects.set(projects);
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
 
@@ -47,10 +47,8 @@ export class ProjectService {
       tap({
         next: (newProject) => {
           this._projects.update((projects) => [...projects, newProject]);
+          this.notify.showSuccess('Project added successfully');
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }

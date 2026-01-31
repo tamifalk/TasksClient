@@ -75,9 +75,8 @@
   align-items: center;
   gap: 8px;
   background: transparent;
-  border: 1px solid #e2e8f0;
-  padding: 6px 14px;
-  border-radius: 10px;
+  border: none;
+  padding: 6px;
   color: #4a5568;
   font-size: 13px;
   font-weight: 500;
@@ -91,7 +90,59 @@
 }
 
 .logout-btn:hover {
-  background: #fff5f5;
-  border-color: #feb2b2;
   color: #e53e3e;
+}
+
+/* לוגו כקישור - ביטול עיצוב ברירת מחדל של a */
+.logo-section {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.logo-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 22px;
+  font-weight: 500; /* משקל עדין למילה הראשונה */
+  letter-spacing: -0.5px;
+  color: #1a202c;
+  display: flex;
+  align-items: center;
+}
+
+/* המילה השנייה תהיה עבה יותר - יוצר עומק */
+.logo-text::after {
+  /* אם את מעדיפה לשלוט בזה דרך ה-CSS במקום ב-HTML */
+}
+
+.logo-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #3182ce; /* הצבע הכחול הנקי שלך */
+  border-radius: 50%;
+  margin: 0 4px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(49, 130, 206, 0.4); /* נצנוץ קטן וחמוד */
+  transform: translateY(1px);
+}
+
+/* אפקט ריחוף עדין - רק הנקודה זזה קצת */
+.logo-section:hover .logo-dot {
+  transform: translateY(-2px);
+  background-color: #2c5282;
+  box-shadow: 0 0 15px rgba(49, 130, 206, 0.6);
+}
+
+.logo-section:hover .logo-text {
+  color: #000;
+}
+
+/* עיצוב ה-Header מסביב שיהיה "אוורירי" */
+.main-header {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 0 40px;
+  border-bottom: 1px solid #f1f5f9;
 }

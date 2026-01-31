@@ -17,9 +17,9 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,      // חייב בשביל ה-matInput
     MatSelectModule,     // חייב בשביל ה-mat-select
     MatButtonModule,     // חייב בשביל שכפתורי ה-Material יגיבו
-    MatIconModule,MatFormFieldModule, 
-    MatInputModule, 
-    MatDatepickerModule, 
+    MatIconModule, MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
     MatNativeDateModule, // חשוב מאוד! בלי זה הלוח שנה לא ייפתח
     MatIconModule,],
   templateUrl: './add-task.html',
@@ -68,6 +68,9 @@ export class AddTask {
     }
     else {
       this.taskForm.markAllAsTouched();
+      Object.values(this.taskForm.controls).forEach(control => {
+        control.markAsDirty();
+      });
     }
   }
 

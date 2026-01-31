@@ -1,17 +1,18 @@
 <header class="main-header">
   <div class="header-container">
-    
-    <div class="logo-section">
-      <mat-icon class="logo-icon">rocket_launch</mat-icon>
-      <span class="app-name">TaskFlow</span>
-    </div>
+
+    <a [routerLink]="currentUser() ? '/tasks' : '/landing'" class="logo-section">
+      <span class="logo-text">
+        Task<span class="logo-dot"></span>Flow
+      </span>
+    </a>
 
     <div class="user-section">
       <div class="user-info">
         <span class="welcome-text">Hello,</span>
         <span class="user-name">{{ currentUser()?.name || 'Guest' }}</span>
       </div>
-      
+
       <div class="divider"></div>
 
       <button class="logout-btn" (click)="onLogout()" title="Logout">

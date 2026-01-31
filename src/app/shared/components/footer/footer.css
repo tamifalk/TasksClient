@@ -1,0 +1,79 @@
+.main-footer {
+  height: 40px;
+  border-top: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* סגנון למרכז - תמיכה ותקשורת */
+.footer-center {
+  display: flex;
+  justify-content: center;
+}
+
+.support-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.support-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.support-item:hover {
+  color: #7b68ee; /* הופך לסגול בריחוף */
+}
+
+.support-item mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.separator {
+  color: #e2e8f0;
+  font-weight: 200;
+}
+
+/* שאר האלמנטים */
+.footer-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.version-tag {
+  background: #f8fafc;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #f1f5f9;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+}

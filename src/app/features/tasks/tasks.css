@@ -6,13 +6,44 @@
   --dark-gray: #1a202c;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px; /* מבטיח שיהיה גובה מינימלי למרכוז */
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  color: var(--medium-gray);
+}
+
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+
 .page-wrapper {
   background-color: var(--bg-color);
-  min-height: 100vh;
   padding: 40px 20px 100px 20px;
   max-width: 1200px; /* ממרכז את כל הדף */
   margin: 0 auto;
   box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  /* שינוי כאן: flex: 1 במקום גובה קבוע */
+  
+  
+  /* שינוי כאן: צמצום ה-padding התחתון כדי שלא יחרוג */
+  
+   /* מבטיח שה-padding נספר בתוך הגובה */
 }
 
 /* סרגל עליון משולב */
@@ -85,7 +116,7 @@
   font-size: 18px;
   width: 18px;
   height: 18px;
-  color: var(--clickup-purple);
+  color: var(--medium-gray);
 }
 
 .divider {

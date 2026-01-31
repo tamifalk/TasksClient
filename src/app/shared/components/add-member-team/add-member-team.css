@@ -1,30 +1,101 @@
+/* רקע המודאל - טשטוש ומרכוז */
 .modal-backdrop {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0; 
+  left: 0;
+  width: 100vw; 
+  height: 100vh;
   background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
   z-index: 10000;
 }
 
+/* כרטיס המודאל - לבן ומעוגל */
 .modal-card {
   background: white;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 30px;
-  padding: 40px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  width: 90%;
+  max-width: 380px; /* צמצום רוחב המודאל */
+  border-radius: 25px;
+  padding: 30px; /* פדינג מצומצם למראה נקי */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.title { margin: 0; font-size: 22px; font-weight: 700; color: #1a202c; }
-.subtitle { font-size: 14px; color: #718096; margin: 8px 0 24px 0; }
+/* כותרות */
+.title { 
+  margin: 0; 
+  font-size: 22px; 
+  font-weight: 800; 
+  color: #1a202c; 
+}
 
+.subtitle { 
+  font-size: 13px; 
+  color: #718096; 
+  margin: 6px 0 20px 0; 
+}
+
+/* גוף הטופס וצפיפות השדות */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* רווח מינימלי בין השדות */
+}
+
+.modern-field.compact {
+  width: 100%;
+  margin-bottom: -4px; /* הצמדת שדות */
+}
+
+/* תיקון עומק (Deep) עבור Material Select/Input כדי שיהיו קומפקטיים */
+::ng-deep .compact .mat-mdc-form-field-infix {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  min-height: 40px !important;
+}
+
+/* אייקונים בתוך תיבת הסלקט */
+.input-icon {
+  color: #cbd5e0;
+  font-size: 20px;
+}
+
+/* כפתורי פעולה */
 .modal-actions {
   display: flex;
-  flex-direction: row; 
   justify-content: center;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 15px;
+}
+
+/* עיצוב כפתור הוספה (חתיך) */
+.submit-btn {
+  background-color: #7b68ee !important; /* סגול כמו שאר המערכת */
+  color: white !important;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-btn:disabled {
+  background-color: #cbd5e0 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #6a56e5 !important;
+  transform: translateY(-1px);
+}
+
+/* כפתור ביטול פשוט */
+.cancel-btn {
+  color: #718096 !important;
+  font-weight: 600;
 }

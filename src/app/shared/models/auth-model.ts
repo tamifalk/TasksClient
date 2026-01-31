@@ -25,3 +25,8 @@ export interface AuthUser {
   role: string;
 }
 
+export interface UserResponse {
+  id: string;
+  name: string;
+}
+

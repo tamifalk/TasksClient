@@ -1,22 +1,28 @@
 <div class="modal-backdrop" (click)="onCancel()">
   <div class="modal-card" (click)="$event.stopPropagation()">
-    
+
     <div class="modal-header">
       <h3 class="title">Add new member</h3>
       <p class="subtitle">Share the workspace with your friends</p>
     </div>
 
     <div class="modal-body">
-      <mat-form-field appearance="outline" class="modern-field">
-        <mat-label>User ID</mat-label>
-        <input matInput [formControl]="userId">
-        <mat-icon matSuffix class="input-icon">face</mat-icon>
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+        <mat-label>Select Member</mat-label>
 
-        @if (userId.hasError('required')) {
-          <mat-error>Don't forget the ID!</mat-error>
+        <mat-select [formControl]="userId" placeholder="Select Member">
+          @for (member of usersService.users$(); track member.id) {
+          <mat-option [value]="member.id">{{ member.name }}</mat-option>
+          }
+        </mat-select>
+
+        <mat-icon matSuffix class="input-icon">groups</mat-icon>
+
+        @if (userId.hasError('required') && userId.dirty) {
+        <mat-error>Please select a member!</mat-error>
         }
         @if (userId.hasError('cannotAddYourself')) {
-          <mat-error>That's you! Try someone else.</mat-error>
+        <mat-error>That's you! Try someone else.</mat-error>
         }
       </mat-form-field>
     </div>
@@ -28,7 +34,7 @@
       <button matButton="tonal" (click)="onSubmit()">
         Add them now
       </button>
-      
+
     </div>
 
   </div>

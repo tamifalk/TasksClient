@@ -146,6 +146,41 @@
   font-weight: 600;
 }
 
+/* לוגו בתוך טופס האוטנטיקציה */
+.auth-logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -1px;
+}
+
+.logo-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #63b3ed; /* תכלת שמתאים לרקע הכחול */
+  border-radius: 50%;
+  margin: 0 4px;
+  box-shadow: 0 0 12px rgba(99, 179, 237, 0.8);
+}
+
+/* עיצוב הודעות השגיאה */
+.error {
+  color: #feb2b2; /* אדום עדין שמתאים לעיצוב מודרני */
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* התאמה לניידים */
 @media (max-width: 850px) {
   .auth-container { flex-direction: column; }

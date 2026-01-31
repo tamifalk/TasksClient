@@ -2,14 +2,16 @@ import { inject, Injectable, signal } from '@angular/core';
 import { TeamAddMemberRequest, TeamResponse, TeamResponseAdd } from '../../shared/models/teams-model';
 import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { NotificationService } from './notification-service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TeamsService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api/teams';
-
+  private notify = inject(NotificationService);
+  private apiUrl = `${environment.apiUrl}/teams`;
   private _teams = signal<TeamResponse[]>([]);
   teams$ = this._teams.asReadonly();
   selectedTeamId = signal<number | null>(null);
@@ -20,9 +22,6 @@ export class TeamsService {
         next: (teams) => {
           this._teams.set(teams);
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -33,10 +32,8 @@ export class TeamsService {
         next: (newTeam) => {
           const teamWithCount: TeamResponse = { ...newTeam, members_count: 1 };
           this._teams.update((teams) => [...teams, teamWithCount]);
+          this.notify.showSuccess('Team created successfully');
         },
-        error: (err) => {
-          //create a component to show error messages
-        }
       })
     );
   }
@@ -55,11 +52,18 @@ export class TeamsService {
             }
             return team;
           }));
+          this.notify.showSuccess('Member added to team successfully');
         },
         error: (err) => {
-          //create a component to show error messages
+          if (err.status === 403) {
+            this.notify.showError('you are not a member of this team');
+          }
         }
       })
     );
+  }
+
+  getTeamMembers(teamId: number) {
+    return this.http.get<TeamAddMemberRequest[]>(`${this.apiUrl}/${teamId}/members`);
   }
 }

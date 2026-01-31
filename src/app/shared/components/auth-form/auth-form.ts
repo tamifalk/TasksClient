@@ -35,6 +35,9 @@ export class AuthForm {
       this.formSubmitted.emit(formData);
     } else {
       this.userForm.markAllAsTouched();
+      Object.values(this.userForm.controls).forEach(control => {
+        control.markAsDirty();
+      });
     }
   }
 }

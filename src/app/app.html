@@ -1,3 +1,7 @@
+@if (loadingService.isLoading()) {
+  <mat-progress-bar mode="indeterminate" color="primary" class="global-loader"></mat-progress-bar>
+}
+
 @if (authService.isLoggedIn()) {
 <div class="layout-container">
     <app-header></app-header>
@@ -6,7 +10,11 @@
         <app-sidebar class="sidebar-container"></app-sidebar>
 
         <main class="content-container">
-            <router-outlet></router-outlet>
+           <div class="router-wrapper">
+                <router-outlet></router-outlet>
+            </div>
+            
+            <app-footer></app-footer>
         </main>
     </div>
 </div>

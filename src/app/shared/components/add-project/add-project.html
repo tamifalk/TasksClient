@@ -8,7 +8,7 @@
 
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="modal-body">
 
-      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="always">
         <mat-label>Select Team Space</mat-label>
         <mat-select formControlName="teamId" placeholder="Select Team Space">
           @for (team of teams(); track team.id) {
@@ -16,21 +16,21 @@
           }
         </mat-select>
         <mat-icon matSuffix class="input-icon">groups</mat-icon>
-        @if(projectForm.get('teamId')?.invalid && projectForm.get('teamId')?.touched) {
+        @if(projectForm.get('teamId')?.invalid && projectForm.get('teamId')?.dirty) {
         <mat-error>Team is required</mat-error>
         }
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="always">
         <mat-label>Project Name</mat-label>
         <input matInput formControlName="name" placeholder="Project Name">
         <mat-icon matSuffix class="input-icon">assignment</mat-icon>
-        @if(projectForm.get('name')?.invalid && projectForm.get('name')?.touched) {
+        @if(projectForm.get('name')?.invalid && projectForm.get('name')?.dirty) {
         <mat-error>Name is required</mat-error>
         }
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="auto">
+      <mat-form-field appearance="outline" class="modern-field compact" floatLabel="always">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description" rows="2" placeholder="Description"></textarea>
         <mat-icon matSuffix class="input-icon">description</mat-icon>
