@@ -1,6 +1,6 @@
 <div class="modal-backdrop" (click)="onCloseComments()">
   <div class="modal-card chat-popup" (click)="$event.stopPropagation()">
-    
+
     <div class="modal-header">
       <h3 class="title">Task Discussion</h3>
       <p class="subtitle">Keep track of updates and team feedback</p>
@@ -8,38 +8,35 @@
 
     <div class="modal-body chat-history">
       @for(comment of comments(); track comment.id) {
-        <div class="message-row" [class.is-me]="comment.author_name === currntUser()?.name">
-          <div class="user-icon">{{ comment.author_name[0] | uppercase }}</div>
-          <div class="bubble">
-            <div class="bubble-header">
-              <span class="name">{{ comment.author_name }}</span>
-              <span class="time">{{ comment.created_at | date:'HH:mm' }}</span>
-            </div>
-            <p class="text">{{ comment.body }}</p>
+      <div class="message-row" [class.is-me]="comment.author_name === currntUser()?.name">
+        <div class="user-icon">{{ comment.author_name[0] | uppercase }}</div>
+        <div class="bubble">
+          <div class="bubble-header">
+            <span class="name">{{ comment.author_name }}</span>
+            <span class="time">{{ comment.created_at | date:'HH:mm' }}</span>
           </div>
+          <p class="text">{{ comment.body }}</p>
         </div>
+      </div>
       } @empty {
-        <p class="empty-msg">No comments yet. Be the first to speak!</p>
+      <p class="empty-msg">No comments yet. Be the first to speak!</p>
       }
     </div>
 
     <div class="chat-footer">
       <mat-form-field appearance="outline" class="modern-field">
         <mat-label>Share your thoughts...</mat-label>
-        <input matInput 
-               [formControl]="commentText" 
-               placeholder="Write a comment here..." 
-               (keyup.enter)="onSubmit()">
+        <input matInput [formControl]="commentText" placeholder="Write a comment here..." (keyup.enter)="onSubmit()">
         @if (commentText.hasError('required') && commentText.touched) {
-          <mat-error>Message cannot be empty</mat-error>
+        <mat-error>Message cannot be empty</mat-error>
         }
       </mat-form-field>
 
       <div class="modal-actions centered">
-        <button matButton="tonal"  (click)="onCloseComments()">
+        <button matButton="tonal" (click)="onCloseComments()">
           Cancel
         </button>
-        <button matButton="tonal"  (click)="onSubmit()">
+        <button matButton="tonal" (click)="onSubmit()">
           Send Comment
         </button>
       </div>

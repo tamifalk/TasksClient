@@ -1,69 +1,62 @@
-/* רקע המודאל - טשטוש ומרכוז */
 .modal-backdrop {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100vw; 
+  width: 100vw;
   height: 100vh;
   background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(8px);
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
   z-index: 10000;
 }
 
-/* כרטיס המודאל - לבן ומעוגל */
 .modal-card {
   background: white;
   width: 90%;
-  max-width: 380px; /* צמצום רוחב המודאל */
+  max-width: 380px;
   border-radius: 25px;
-  padding: 30px; /* פדינג מצומצם למראה נקי */
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-/* כותרות */
-.title { 
-  margin: 0; 
-  font-size: 22px; 
-  font-weight: 800; 
-  color: #1a202c; 
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a202c;
 }
 
-.subtitle { 
-  font-size: 13px; 
-  color: #718096; 
-  margin: 6px 0 20px 0; 
+.subtitle {
+  font-size: 13px;
+  color: #718096;
+  margin: 6px 0 20px 0;
 }
 
-/* גוף הטופס וצפיפות השדות */
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 2px; /* רווח מינימלי בין השדות */
+  gap: 2px;
 }
 
 .modern-field.compact {
   width: 100%;
-  margin-bottom: -4px; /* הצמדת שדות */
+  margin-bottom: -4px;
 }
 
-/* תיקון עומק (Deep) עבור Material Select/Input כדי שיהיו קומפקטיים */
 ::ng-deep .compact .mat-mdc-form-field-infix {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
   min-height: 40px !important;
 }
 
-/* אייקונים בתוך תיבת הסלקט */
 .input-icon {
   color: #cbd5e0;
   font-size: 20px;
 }
 
-/* כפתורי פעולה */
 .modal-actions {
   display: flex;
   justify-content: center;
@@ -71,9 +64,8 @@
   margin-top: 15px;
 }
 
-/* עיצוב כפתור הוספה (חתיך) */
 .submit-btn {
-  background-color: #7b68ee !important; /* סגול כמו שאר המערכת */
+  background-color: #7b68ee !important;
   color: white !important;
   border: none;
   border-radius: 12px;
@@ -94,7 +86,6 @@
   transform: translateY(-1px);
 }
 
-/* כפתור ביטול פשוט */
 .cancel-btn {
   color: #718096 !important;
   font-weight: 600;

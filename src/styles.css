@@ -47,37 +47,32 @@
 }
 
 /* --- עיצוב שדות קלט (Modern Field) --- */
-
 .mat-mdc-form-field.modern-field {
   width: 100%;
 }
 
-/* 1. תיקון הפינות - עיגול רק בקצוות החיצוניים למניעת הקשת הכפולה */
 .mat-mdc-form-field.modern-field .mdc-notched-outline__leading {
-  border-radius: 25px 0 0 25px !important; /* עיגול חיצוני שמאלי בלבד */
-  width: 22px !important; /* מרחיב את ההתחלה ליצירת קימור יפה */
+  border-radius: 25px 0 0 25px !important; 
+  width: 22px !important; 
   border-right: none !important;
 }
 
 .mat-mdc-form-field.modern-field .mdc-notched-outline__notch {
   border-left: none !important;
   border-right: none !important;
-  border-radius: 0 !important; /* ביטול קימורים באמצע שיוצרים עיוות */
+  border-radius: 0 !important; 
 }
 
 .mat-mdc-form-field.modern-field .mdc-notched-outline__trailing {
-  border-radius: 0 25px 25px 0 !important; /* עיגול חיצוני ימני בלבד */
+  border-radius: 0 25px 25px 0 !important; 
   border-left: none !important;
 }
 
-/* 2. סגירת ה-Notch (החור בקו העליון) */
-/* זה מוודא שהמסגרת תהיה רציפה גם כשהלייבל צף או כשיש פלייסholder */
 .mat-mdc-form-field.modern-field .mdc-notched-outline__notch {
   width: auto !important;
   border-top: 2px solid #edf2f7 !important;
 }
 
-/* 3. צבעי מסגרת ורוחב */
 .mat-mdc-form-field.modern-field .mdc-notched-outline__leading,
 .mat-mdc-form-field.modern-field .mdc-notched-outline__notch,
 .mat-mdc-form-field.modern-field .mdc-notched-outline__trailing {
@@ -85,17 +80,14 @@
   border-width: 2px !important;
 }
 
-/* 4. פוקוס (סגול) */
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__leading,
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__notch,
 .mat-mdc-form-field.modern-field.mat-form-field-focused .mdc-notched-outline__trailing {
   border-color: var(--primary-color) !important;
 }
 
-/* 5. תיקון פלייסהולדר - לוודא שהוא לא נתקע בלייבל */
-/* כדי שהפלייסהולדר יופיע מיד, ודאי שב-HTML יש floatLabel="always" */
 .mat-mdc-form-field.modern-field .mdc-floating-label {
-  display: none !important; /* מסתירים את הלייבל המקורי כדי שהפלייסהולדר ישלוט */
+  display: none !important; 
 }
 
 /* אייקונים */

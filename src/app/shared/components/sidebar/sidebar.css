@@ -6,51 +6,46 @@
   flex-direction: column;
   align-items: center;
   padding: 16px 0 24px 0;
-  
-  /* השינוי הקריטי: */
-  position: relative; /* או פשוט למחוק את ה-position: fixed */
+  position: relative; 
   left: auto;
   top: auto;
   
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 10; /* מספיק ערך נמוך יותר מההדר */
+  z-index: 10; 
 }
 
-/* הזזת האייקון העליון (הלוגו) טיפה למעלה */
 .sidebar-header {
   margin-bottom: 20px;
-  margin-top: -8px; /* העלאה נוספת של הלוגו */
+  margin-top: -8px; 
 }
 
 .nav-list {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* צמצום רווחים למראה מהודק */
+  gap: 8px; 
   flex-grow: 1;
   width: 100%;
   align-items: center;
 }
 
-/* עיצוב פריט ניווט */
 .nav-item {
-  position: relative; /* חשוב בשביל הקו בצד */
+  position: relative; 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #8a8d91; /* צבע ברירת מחדל אפרפר */
+  color: #8a8d91; 
   width: 100%;
   padding: 14px 0;
   transition: all 0.2s ease;
 }
 
-/* הקו בצד - מופיע בריחוף ובבחירה */
 .nav-item::before {
   content: '';
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%) scaleY(0); /* מתחיל קטן ונסתר */
+  transform: translateY(-50%) scaleY(0); 
   width: 3px;
   height: 24px;
   background-color: #ffffff;
@@ -58,28 +53,25 @@
   transition: transform 0.2s ease;
 }
 
-/* --- מצב ריחוף (Hover) --- */
 .nav-item:hover {
-  color: #ffffff; /* הטקסט והאייקון נצבעים בלבן */
+  color: #ffffff; 
 }
 
 .nav-item:hover::before {
-  transform: translateY(-50%) scaleY(1); /* הקו הלבן מופיע בריחוף */
-  opacity: 0.6; /* טיפה שקוף בריחוף בלבד */
+  transform: translateY(-50%) scaleY(1); 
+  opacity: 0.6; 
 }
 
-/* --- מצב פעיל (Active) --- */
 .nav-item.active {
-  color: #ffffff; /* נשאר לבן בבחירה */
+  color: #ffffff; 
 }
 
 .nav-item.active::before {
-  transform: translateY(-50%) scaleY(1); /* הקו נשאר יציב ומלא */
+  transform: translateY(-50%) scaleY(1); 
   opacity: 1;
   background-color: #ffffff;
 }
 
-/* עיצוב האייקון והטקסט בתוך הפריט */
 .nav-item mat-icon {
   font-size: 24px;
   margin-bottom: 4px;
@@ -90,7 +82,6 @@
   font-weight: 600;
 }
 
-/* עיצוב האווטאר (נשאר כפי שביקשת - לבן עם טקסט שחור) */
 .user-avatar {
   width: 40px;
   height: 40px;
@@ -112,8 +103,8 @@
 }
 
 .sidebar-footer {
-  margin-top: auto;   /* שומר אותו בתחתית הרשימה */
-  padding-bottom: 50px; /* ככל שתגדילי את המספר הזה, האייקון יעלה יותר למעלה */
+  margin-top: auto;   
+  padding-bottom: 50px; 
   display: flex;
   flex-direction: column;
   align-items: center;

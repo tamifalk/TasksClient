@@ -20,6 +20,10 @@ export class ProjectService {
 
   selectedProjectId = signal<number | null>(null);
 
+  constructor() {
+    this.getProjects().subscribe();
+  }
+
   getProjects() {
     return this.http.get<ProjectResponse[]>(this.apiUrl).pipe(
       tap({

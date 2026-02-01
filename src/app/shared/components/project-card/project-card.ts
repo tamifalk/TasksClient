@@ -7,20 +7,24 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project-card',
-  imports: [MatIcon,DatePipe, RouterLink],
+  imports: [MatIcon, DatePipe, RouterLink],
   templateUrl: './project-card.html',
   styleUrl: './project-card.css',
 })
 export class ProjectCard {
   project = input.required<ProjectResponse>();
   teamService = inject(TeamsService);
-  projectId=output<number>();
+  projectId = output<number>();
 
-  teamName =computed(() => {
-    const team = this.teamService.teams$().find(t => t.id === this.project().team_id);
-  return team ? team.name : 'Unknown Team';
-  }
-  );
+  teamName = computed(() => {
+    const teams = this.teamService.teams$();
+    const currentProject = this.project();
+    if (teams.length === 0) {
+      return 'Loading...';
+    }
+    const team = teams.find(t => t.id == currentProject.team_id);
+    return team ? team.name : 'No Team Found';
+  });
 
   projectClicked() {
     this.projectId.emit(this.project().id);

@@ -6,7 +6,7 @@
     </div>
 
     <div class="header-actions">
-       <div class="view-controls">
+      <div class="view-controls">
         <button [class.active]="viewMode() === 'list'" (click)="setViewMode('list')">
           <mat-icon>format_list_bulleted</mat-icon> List
         </button>
@@ -30,47 +30,45 @@
 
   <main class="main-content">
     @if (viewMode() === 'board') {
-      <div class="board-container">
-        @for (column of boardTasks(); track column.title) {
-          <div class="board-column">
-            <div class="column-header">
-              <h3 [style.color]="getStatusColor(column.title)">{{ column.title }}</h3>
-              <span class="count-badge" [style.color]="getStatusColor(column.title)">
-                {{ column.tasks.length }}
-              </span>
-            </div>
+    <div class="board-container">
+      @for (column of boardTasks(); track column.title) {
+      <div class="board-column">
+        <div class="column-header">
+          <h3 [style.color]="getStatusColor(column.title)">{{ column.title }}</h3>
+          <span class="count-badge" [style.color]="getStatusColor(column.title)">
+            {{ column.tasks.length }}
+          </span>
+        </div>
 
-            <div class="column-tasks">
-              @for (task of column.tasks; track task.id) {
-                <app-task-card [task]="task" [viewMode]="'board'" 
-                  (delelteTask)="onDeleteTask($event)"
-                  (updateTask)="onTaskUpdated($event)">
-                </app-task-card>
-              }
-            </div>
-          </div>
-        }
+        <div class="column-tasks">
+          @for (task of column.tasks; track task.id) {
+          <app-task-card [task]="task" [viewMode]="'board'" (delelteTask)="onDeleteTask($event)"
+            (updateTask)="onTaskUpdated($event)">
+          </app-task-card>
+          }
+        </div>
       </div>
+      }
+    </div>
     }
 
     @else {
-      <div class="list-container">
-        @for (task of tasks(); track task.id) {
-          <app-task-card [task]="task" [viewMode]="'list'" 
-            (delelteTask)="onDeleteTask($event)"
-            (updateTask)="onTaskUpdated($event)">
-          </app-task-card>
-        } @empty {
-          <div class="empty-state">
-            <mat-icon>auto_awesome</mat-icon>
-            <p>All done! You don't have any tasks at the moment.</p>
-          </div>
-        }
+    <div class="list-container">
+      @for (task of tasks(); track task.id) {
+      <app-task-card [task]="task" [viewMode]="'list'" (delelteTask)="onDeleteTask($event)"
+        (updateTask)="onTaskUpdated($event)">
+      </app-task-card>
+      } @empty {
+      <div class="empty-state">
+        <mat-icon>auto_awesome</mat-icon>
+        <p>All done! You don't have any tasks at the moment.</p>
       </div>
+      }
+    </div>
     }
   </main>
 
   @if(isAddingTask()) {
-    <app-add-task (taskSaved)="closeAddTask()"></app-add-task>
+  <app-add-task (taskSaved)="closeAddTask()"></app-add-task>
   }
 </div>

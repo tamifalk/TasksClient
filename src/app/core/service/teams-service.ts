@@ -16,6 +16,10 @@ export class TeamsService {
   teams$ = this._teams.asReadonly();
   selectedTeamId = signal<number | null>(null);
 
+  constructor() {
+    this.getTeams().subscribe();
+  }
+
   getTeams() {
     return this.http.get<TeamResponse[]>(this.apiUrl).pipe(
       tap({

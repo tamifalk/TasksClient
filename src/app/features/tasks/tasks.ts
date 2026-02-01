@@ -3,14 +3,14 @@ import { TasksService } from '../../core/service/tasks-service';
 import { TaskCard } from '../../shared/components/task-card/task-card';
 import { AddTask } from '../../shared/components/add-task/add-task';
 import { TaskUpdateRequest } from '../../shared/models/task-model';
-import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MatIcon, MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectService } from '../../core/service/project-service';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskCard, AddTask, RouterOutlet, RouterLinkActive, RouterLink, MatIcon, MatButtonModule, MatIconModule],
+  imports: [TaskCard, AddTask,MatIcon, MatButtonModule, MatIconModule],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })

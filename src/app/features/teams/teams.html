@@ -15,16 +15,16 @@
 
   <main class="teams-grid">
     @for(team of teams(); track team.id) {
-      <app-team-card [team]="team" (teamId)="showTeams($event)"></app-team-card>
+    <app-team-card [team]="team" (teamId)="showTeams($event)"></app-team-card>
     } @empty {
-      <div class="empty-state">
-        <mat-icon>group_off</mat-icon>
-        <p>No teams found. Start by creating your first team!</p>
-      </div>
+    <div class="empty-state">
+      <mat-icon>group_off</mat-icon>
+      <p>No teams found. Start by creating your first team!</p>
+    </div>
     }
   </main>
 
   @if(isAddingTeam()) {
-    <app-add-team (cancel)="closeAddTeam()" (teamSaved)="closeAddTeam()"></app-add-team>
+  <app-add-team (cancel)="closeAddTeam()" (teamSaved)="closeAddTeam()"></app-add-team>
   }
 </div>

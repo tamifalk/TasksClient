@@ -16,7 +16,6 @@
   font-size: 11px;
 }
 
-/* סגנון למרכז - תמיכה ותקשורת */
 .footer-center {
   display: flex;
   justify-content: center;
@@ -37,7 +36,7 @@
 }
 
 .support-item:hover {
-  color: #7b68ee; /* הופך לסגול בריחוף */
+  color: #7b68ee; 
 }
 
 .support-item mat-icon {
@@ -51,7 +50,6 @@
   font-weight: 200;
 }
 
-/* שאר האלמנטים */
 .footer-left {
   display: flex;
   gap: 10px;

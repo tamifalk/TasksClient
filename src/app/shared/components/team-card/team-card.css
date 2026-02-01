@@ -77,7 +77,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* סידור החלק התחתון */
 .card-bottom-info {
     padding: 28px 16px 16px;
 }
@@ -85,15 +84,12 @@
 .info-action-row {
     display: flex;
     justify-content: space-between;
-    /* דוחף את הצדדים לקצוות */
     align-items: center;
     flex-direction: row;
-    /* שם בשמאל, כפתור בימין */
 }
 
 .team-details-left {
     text-align: left;
-    /* יישור טקסט לשמאל */
 }
 
 .team-name {
@@ -109,7 +105,6 @@
     font-weight: 500;
 }
 
-/* כפתור הוספת חבר - צד ימין */
 .btn-add-member-small {
     background: #f8fafc;
     border: 1px solid #f1f5f9;
@@ -132,8 +127,7 @@
 }
 
 .fixed-overlay-wrapper {
-  /* זה מוציא את הפופאפ מהמרחב של הכרטיס */
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

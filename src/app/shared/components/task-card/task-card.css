@@ -3,7 +3,6 @@
   width: 100%;
 }
 
-/* --- תצוגת רשימה (LIST) - מירכוז ויישור כירורגי --- */
 .task-card.list {
   width: 950px;
   height: 70px;
@@ -11,26 +10,25 @@
   border-radius: 12px;
   border: 1px solid #f0f2f5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  margin: 0 auto 12px auto; /* ממרכז את הכרטיס בדף */
+  margin: 0 auto 12px auto; 
   display: flex;
   align-items: center;
-  justify-content: center; /* ממרכז את התוכן בתוך הכרטיס */
+  justify-content: center; 
   padding: 0 20px;
 }
 
 .task-card.list .content-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; /* ריכוז האלמנטים במרכז הפס */
+  justify-content: center; 
   width: 100%;
 }
 
-/* הגדרת רוחב קבוע לכל טור - מונע קפיצות */
 .task-card.list .task-title {
   width: 220px;
   min-width: 220px;
   max-width: 220px;
-  text-align: center; /* כותרת ממורכזת */
+  text-align: center; 
   font-weight: 600;
   color: var(--text-main);
   white-space: nowrap;
@@ -68,7 +66,6 @@
   gap: 12px;
 }
 
-/* --- תצוגת בורד (BOARD) - עיצוב אחיד --- */
 .task-card.board {
   width: 280px;
   height: 320px;
@@ -88,7 +85,7 @@
 }
 
 .task-card.board .task-title {
-  height: 50px; /* מקום קבוע ל-2 שורות */
+  height: 50px; 
   text-align: center;
   font-weight: 700;
   font-size: 1.1rem;
@@ -99,7 +96,6 @@
   margin-bottom: 20px;
 }
 
-/* שדות בחירה - עיצוב משותף */
 select {
   border: none;
   background: #f8fafc;
@@ -119,12 +115,10 @@ select {
   margin: 0 auto 12px auto;
 }
 
-/* צבעי סטטוס */
 .status-select[data-status="todo"] { background: #ff4d4d; color: white; }
 .status-select[data-status="in_progress"] { background: #008cff; color: white; }
 .status-select[data-status="done"] { background: #6bc950; color: white; }
 
-/* עדיפות - עיצוב עדין */
 .priority-select {
   background: #f1f5f9;
   color: #475569;
@@ -150,6 +144,8 @@ select {
 .actions {
   display: flex;
   gap: 8px;
+  justify-content: center;
+    margin-top: 26px;
 }
 
 .icon-btn {
@@ -167,3 +163,85 @@ select {
 .icon-btn:hover {
   background: #edf2f7;
 }
+
+select option {
+  background-color: #ffffff !important; 
+  color: #334155 !important;           
+  font-weight: normal;
+}
+
+select option:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* --- עיצוב תגית הפרויקט --- */
+.project-tag mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.task-card.list .project-tag {
+  width: 130px;
+  min-width: 130px;
+  max-width: 130px;
+  margin: 0 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.project-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b; 
+  font-size: 0.75rem;
+  flex-shrink: 0; 
+}
+
+.project-label {
+  font-weight: 700; 
+  color: #94a3b8;
+  margin-right: 2px;
+}
+
+.project-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1; 
+}
+
+.task-card.list .project-tag {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  margin: 0 10px; 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.task-card.board .project-tag {
+  justify-content: center;
+  margin-bottom: 10px;
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 20px; 
+  align-self: center;
+}
+
+.task-card.list {
+  width: 1050px;
+}
+
+.task-card.list .content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  flex-wrap: nowrap; 
+}
+

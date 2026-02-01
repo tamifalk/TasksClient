@@ -11,11 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-project',
-  imports: [ReactiveFormsModule, // חייב בשביל שהטופס והכפתור יעבדו
-    MatFormFieldModule,  // חייב בשביל העיצוב של השדה
-    MatInputModule,      // חייב בשביל ה-matInput
-    MatSelectModule,     // חייב בשביל ה-mat-select
-    MatButtonModule,     // חייב בשביל שכפתורי ה-Material יגיבו
+  imports: [ReactiveFormsModule, 
+    MatFormFieldModule,  
+    MatInputModule,      
+    MatSelectModule,     
+    MatButtonModule,   
     MatIconModule],
   templateUrl: './add-project.html',
   styleUrl: './add-project.css',

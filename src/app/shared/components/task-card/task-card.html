@@ -2,6 +2,12 @@
   <div class="card-inner">
     <div class="content-wrapper">
 
+      <div class="project-tag" [title]="'Project: ' + projectName()">
+        <mat-icon>folder</mat-icon>
+        <span class="project-label">Project:</span>
+        <span class="project-name">{{ projectName() }}</span>
+      </div>
+
       <div class="task-title" [title]="task().title">{{ task().title }}</div>
 
       <select class="status-select" #statusSelect (change)="updateField(task().id,{status: statusSelect.value})"
@@ -35,12 +41,10 @@
     </div>
   </div>
 
-    @if (isComments()) {
-    <div class="comments-section">
-      <app-comments 
-      [taskId]="task().id" 
-      (commentClose)="isComments.set(false)">
+  @if (isComments()) {
+  <div class="comments-section">
+    <app-comments [taskId]="task().id" (commentClose)="isComments.set(false)">
     </app-comments>
-    </div>
-    }
   </div>
+  }
+</div>

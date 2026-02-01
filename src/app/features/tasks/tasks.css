@@ -9,168 +9,156 @@
 .main-content {
   display: flex;
   flex-direction: column;
-  min-height: 300px; /* מבטיח שיהיה גובה מינימלי למרכוז */
+  min-height: 300px;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 60px;
-  color: var(--medium-gray);
-}
+  .empty-state {
+    text-align: center;
+    padding: 60px;
+    color: var(--medium-gray);
+  }
 
+  .empty-state mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
 
-.empty-state mat-icon {
-  font-size: 48px;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 16px;
-  opacity: 0.5;
-}
+  .page-wrapper {
+    background-color: var(--bg-color);
+    padding: 40px 20px 100px 20px;
+    max-width: 1200px;
+    /* ממרכז את כל הדף */
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-sizing: border-box;
+  }
 
-
-.page-wrapper {
-  background-color: var(--bg-color);
-  padding: 40px 20px 100px 20px;
-  max-width: 1200px; /* ממרכז את כל הדף */
-  margin: 0 auto;
-  box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.page-wrapper {
-  /* שינוי כאן: flex: 1 במקום גובה קבוע */
-  
-  
-  /* שינוי כאן: צמצום ה-padding התחתון כדי שלא יחרוג */
-  
-   /* מבטיח שה-padding נספר בתוך הגובה */
-}
-
-/* סרגל עליון משולב */
-.task-page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end; /* יישור הכפתורים לתחתית הטקסט */
-  margin-bottom: 24px;
-  gap: 20px;
-}
-
-.main-title {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--dark-gray);
-}
-
-.page-subtitle {
-  margin: 8px 0 0 0;
-  color: var(--text-sub);
-  font-size: 1rem;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.view-controls {
-  background: white;
-  padding: 4px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  display: flex;
-}
-
-.view-controls button {
-  border: none;
-  background: transparent;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: var(--text-sub);
-  transition: all 0.2s;
-}
-
-.view-controls button.active {
-  background: #f1f0ff;
-  color: var(--clickup-purple);
-}
-
-.click-hint {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-sub);
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-  font-weight: 500;
-  opacity: 0.8;
-}
-
-.click-hint mat-icon {
-  font-size: 18px;
-  width: 18px;
-  height: 18px;
-  color: var(--medium-gray);
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin-top: 4px;
-  margin-bottom: 40px;
-}
-
-/* --- תצוגת בורד --- */
-.board-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.board-column {
-  flex: 1 1 280px; 
-  max-width: 350px;
-  background: #ffffff88;
-  border-radius: 16px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.column-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #eef2f6;
-}
-
-.column-header h3 {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* --- התאמות מובייל --- */
-@media (max-width: 900px) {
   .task-page-header {
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    gap: 20px;
+  }
+
+  .main-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark-gray);
+  }
+
+  .page-subtitle {
+    margin: 8px 0 0 0;
+    color: var(--text-sub);
+    font-size: 1rem;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .view-controls {
+    background: white;
+    padding: 4px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+  }
+
+  .view-controls button {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-sub);
+    transition: all 0.2s;
+  }
+
+  .view-controls button.active {
+    background: #f1f0ff;
+    color: var(--clickup-purple);
+  }
+
+  .click-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .click-hint mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--medium-gray);
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 4px;
+    margin-bottom: 40px;
+  }
+
+  .board-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     align-items: flex-start;
   }
-  
-  .header-actions {
-    width: 100%;
-    justify-content: space-between;
+
+  .board-column {
+    flex: 1 1 280px;
+    max-width: 350px;
+    background: #ffffff88;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
   }
-}
+
+  .column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eef2f6;
+  }
+
+  .column-header h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* --- התאמות מובייל --- */
+  @media (max-width: 900px) {
+    .task-page-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }

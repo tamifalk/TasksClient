@@ -1,6 +1,6 @@
 <div class="modal-backdrop" (click)="onCancel()">
   <div class="modal-card" (click)="$event.stopPropagation()">
-    
+
     <div class="modal-header">
       <h3 class="title">Create New Team</h3>
       <p class="subtitle">Give your team a name to start collaborating</p>
@@ -13,16 +13,16 @@
         <mat-icon matSuffix class="input-icon">groups</mat-icon>
 
         @if (teamName.hasError('required')&&teamName.dirty) {
-          <mat-error>Team name is required</mat-error>
+        <mat-error>Team name is required</mat-error>
         }
       </mat-form-field>
     </div>
 
     <div class="modal-actions">
-      <button matButton="tonal"  (click)="onCancel()">
+      <button matButton="tonal" (click)="onCancel()">
         Cancel
       </button>
-      <button matButton="tonal"  (click)="onSubmit()">
+      <button matButton="tonal" (click)="onSubmit()">
         Create Team
       </button>
     </div>

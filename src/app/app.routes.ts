@@ -8,14 +8,29 @@ import { Projects } from './features/projects/projects';
 import { Component } from '@angular/core';
 import { Comments } from './features/comments/comments';
 import { authGuard } from './core/guard/auth.guard';
+import { MainLayout } from './shared/components/main-layout/main-layout';
 
 export const routes: Routes = [
+    // ראוטים ללא הדר ופוטר (דף נחיתה והתחברות)
     { path: '', component: StartPage },
     { path: 'login', component: Login },
     { path: 'register', component: Register },
-    { path: 'tasks', component: Tasks, children: [{ path: 'comments', component: Comments }], canActivate: [authGuard] },
-    { path: 'teams', component: Teams, canActivate: [authGuard] },
-    { path: 'teams/:teamId/projects', component: Projects, canActivate: [authGuard] },
-    { path: 'projects', component: Projects, canActivate: [authGuard] },
-    { path: 'projects/:projectId/tasks', component: Tasks, canActivate: [authGuard] },
+
+    // ראוטים עם הדר, פוטר וסיידבר - כולם תחת המעטפת המשותפת
+    {
+        path: '',
+        component: MainLayout, 
+        canActivate: [authGuard],       
+        children: [
+            { 
+                path: 'tasks', 
+                component: Tasks, 
+                children: [{ path: 'comments', component: Comments }] 
+            },
+            { path: 'teams', component: Teams },
+            { path: 'teams/:teamId/projects', component: Projects },
+            { path: 'projects', component: Projects },
+            { path: 'projects/:projectId/tasks', component: Tasks },
+        ]
+    },
 ];

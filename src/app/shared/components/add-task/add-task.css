@@ -1,49 +1,51 @@
 .modal-backdrop {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10000;
 }
 
 .modal-card {
   background: white;
   width: 90%;
-  max-width: 380px; /* רוחב מצומצם בדיוק כמו בפרויקט */
+  max-width: 380px;
   border-radius: 25px;
-  padding: 30px; 
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.title { 
-  margin: 0; 
-  font-size: 22px; 
-  font-weight: 800; 
-  color: #1a202c; 
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a202c;
 }
 
-.subtitle { 
-  font-size: 13px; 
-  color: #718096; 
-  margin: 6px 0 20px 0; 
+.subtitle {
+  font-size: 13px;
+  color: #718096;
+  margin: 6px 0 20px 0;
 }
 
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 2px; /* רווח מצומצם בין השדות */
+  gap: 2px;
 }
 
-/* התאמת צפיפות לשדות של Material */
 .modern-field.compact {
   width: 100%;
-  margin-bottom: -4px; /* משיכה של השדות */
+  margin-bottom: -4px;
 }
 
-/* הקטנת גובה פנימי */
 ::ng-deep .compact .mat-mdc-form-field-infix {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
@@ -66,7 +68,6 @@ textarea.mat-mdc-input-element {
   resize: none;
 }
 
-/* כפתור ה-Submit הסגול שמתאים לשפה של ClickUp */
 .submit-btn {
   background-color: #7b68ee !important;
   color: white !important;

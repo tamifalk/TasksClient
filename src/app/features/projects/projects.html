@@ -34,20 +34,3 @@
   }
 </div>
 
-<!-- @for(project of projectService.getProjectsByTeam(); track project.id) {   
-    <app-project-card [project]="project" (projectId)="showTasks($event)"></app-project-card>
-}
-
-<hr /> @if (taskService.tasks$().length > 0) {
-    <div class="tasks-section">
-        <h2>Project Tasks</h2>
-        <app-tasks></app-tasks> 
-    </div>
-} @else {
-    <p>Select a project to view its tasks.</p>
-}
-
-@if(isAddingProject()) {
-    <app-add-project (closeAddProject)="closeAddProject()"></app-add-project>
-}
-<button (click)="addProject()">Add Project</button> -->

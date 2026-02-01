@@ -7,20 +7,20 @@ import { MatIcon, MatIconModule } from "@angular/material/icon";
 import { MatOption, MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // נדרש כדי שהדאטפיקר יבין פורמט תאריכים סטנדרטי
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-add-task',
-  imports: [ReactiveFormsModule, // חייב בשביל שהטופס והכפתור יעבדו
-    MatFormFieldModule,  // חייב בשביל העיצוב של השדה
-    MatInputModule,      // חייב בשביל ה-matInput
-    MatSelectModule,     // חייב בשביל ה-mat-select
-    MatButtonModule,     // חייב בשביל שכפתורי ה-Material יגיבו
+  imports: [ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
     MatIconModule, MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule, // חשוב מאוד! בלי זה הלוח שנה לא ייפתח
+    MatNativeDateModule,
     MatIconModule,],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',

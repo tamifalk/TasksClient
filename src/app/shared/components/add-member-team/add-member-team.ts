@@ -12,8 +12,7 @@ import { MatOption, MatSelectModule } from "@angular/material/select";
 @Component({
   selector: 'app-add-member-team',
   imports: [MatError, MatLabel, MatFormField, ReactiveFormsModule, MatInputModule, MatIcon, MatButtonModule, MatIconModule, MatOption,ReactiveFormsModule,
-  MatSelectModule,      // חובה!
-  MatFormFieldModule,],
+  MatSelectModule,MatFormFieldModule,],
   templateUrl: './add-member-team.html',
   styleUrl: './add-member-team.css',
 })
