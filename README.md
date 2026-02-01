@@ -1,59 +1,98 @@
-# TeamTasks
+# TeamTasks | Next-Gen Workflow Engine
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+**TeamTasks** is an advanced task management application designed to help teams manage their workflows with surgical precision. Built with **Angular 19+**, it leverages cutting-edge reactivity and a sleek, modern UI for a seamless experience.
 
-## Development server
+🔗 **Live Demo:** [https://tasksclient.onrender.com/](https://tasksclient.onrender.com/)
+📂 **Backend Repo:** [https://github.com/tamifalk/TasksClient.git](https://github.com/tamifalk/TasksClient.git)
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## Key Features
+
+- **Signals-Based State Management**: Ultra-fast UI updates using Angular Signals for zero-overhead reactivity.
+- **Board & List Views**: Seamlessly switch between a visual Kanban Board and a high-density, precisely aligned List view.
+- **Intelligent Task Mapping**: Real-time project and team identification using Computed Signals.
+- **Interactive Collaboration**: Built-in commenting system for every task to streamline team communication.
+- **Global Loading & Security**: Centralized HTTP Interceptors for JWT authentication and real-time progress tracking.
+- **Modern UI/UX**: Professional design featuring Glassmorphism, CSS animations, and Material Design 3.
+- **Responsive Design**: Mobile-first architecture optimized for all screen sizes.
+
+---
+
+## Technologies
+
+- **Angular 19+**: Featuring Modern Control Flow (`@if`, `@for`) and Standalone Components.
+- **State Management**: **Angular Signals** for reactive and efficient state handling.
+- **TypeScript**: Strongly-typed architecture for maximum code reliability.
+- **Material Design**: High-fidelity UI components for a polished user experience.
+- **RxJS**: Advanced asynchronous stream handling for HTTP and global events.
+- **REST API**: Secure communication between the Angular client and the backend.
+
+---
+
+## Installation and Running
+
+### System Requirements
+- Node.js (v18+)
+- Angular CLI (v17+)
+
+### Steps
+1. **Clone & Install:**
+   ```bash
+   git clone https://github.com/tamifalk/TasksClient.git
+   cd TasksClient
+   npm install
+   ```
+
+2. **Run Development Server:**
+   ```bash
+   ng serve
+   ```
+
+   🚀 Access the app at: [http://localhost:4200](http://localhost:4200)
+
+---
+
+## Project Structure
+
+```
+TasksClient/
+├── src/app/
+│   ├── core/           # Singleton Services, Interceptors, and Guards
+│   ├── features/       # Main business logic (Tasks, Teams, Projects)
+│   ├── shared/         # Reusable Standalone Components (TaskCard, Header)
+├── angular.json        # Angular workspace configuration
+└── package.json        # Project dependencies
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Testing & Deployment
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Unit Tests:**
+  ```bash
+  ng test
+  ```
 
-```bash
-ng generate component component-name
-```
+- **Build for Production:**
+  ```bash
+  ng build --configuration production
+  ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Deployment:** This project is automated for deployment via Render.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Contribution & License
 
-To build the project run:
+We welcome contributions! Fork the repo, create a feature branch, and submit a Pull Request.
 
-```bash
-ng build
-```
+Licensed under the MIT License.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Project Creator
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Creator:** Tami Falk
+- **Email:** t6795087@gmail.com
+- **Live Site:** [TeamTasks Online](https://tasksclient.onrender.com/)
